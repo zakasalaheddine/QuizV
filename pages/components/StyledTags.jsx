@@ -69,6 +69,57 @@ export const StepStyled = styled(motion.div)`
     text-transform: uppercase;
     vertical-align: top;
     padding-left: 10px;
+    font-weight: bold;
+    font-size: 1rem;
   }
 `
+
+export const LabelStyled = styled.label`
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+  display: block;
+  font-size: 1.3rem;
+`
+
+export const CardStyled = styled.div`
+  @media (min-width: 992px) {
+    width: 60%;
+  }
+  margin-top: 20px;
+  margin-bottom: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 20px;
+  box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+  overflow: hidden;
+`
+
+export const SelectStyled = styled(motion.select)`
+  font-weight: bold;
+  outline: none;
+  border-radius: 20px;
+  padding: 0px 30px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+`
+
+export const InputTextStyled = styled.input`
+  font-weight: bold;
+  font-size: 1.2rem;
+  outline: none;
+  border-radius: 20px;
+  padding: 0px 30px;
+  box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+`
+
+export const ButtonStyled = styled.button`
+  font-weight: bold;
+  font-size: 1.2rem;
+  outline: none;
+  border-radius: 20px;
+  box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+`
+
 

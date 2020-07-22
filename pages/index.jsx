@@ -2,6 +2,7 @@
 import { SlideFromRightToLeft, FadeInAnnimation } from './components/FramerMotionAnnimations'
 import { TitleStyled, ImageLogo } from './components/StyledTags'
 import Steps from './components/Steps'
+import StartForm from './components/StartForm'
 
 export default function Home() {
   return (
@@ -14,8 +15,11 @@ export default function Home() {
               src="https://webestiefy.com/bestimages/bestiefy.png"
               alt="Logo"
               className="img-fluid mx-auto d-block" />
-            <TitleStyled variants={SlideFromRightToLeft} initial="initial" animate="animate">How well do your friends know you ?</TitleStyled>
+            <TitleStyled variants={SlideFromRightToLeft} initial="initial" animate="animate">
+              How well do your friends know you ?
+              </TitleStyled>
             <Steps />
+            <StartForm />
           </div>
           <div className="col-md-2"></div>
         </div>
