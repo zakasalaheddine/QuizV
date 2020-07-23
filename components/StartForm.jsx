@@ -2,7 +2,7 @@ import { LabelStyled, CardStyled, SelectStyled, InputTextStyled, ButtonStyled } 
 import { SlideFromRightToLeft } from "./FramerMotionAnnimations";
 import { useContext } from "react";
 import CreateQuizContext from "../context/CreateQuizContext";
-import { changeUsername, changeSelectedLang, changeSteps } from "../context/CreateQuizActions";
+import { changeUsername, changeSelectedLang, changeSteps, updateQuestionsWithUsername } from "../context/CreateQuizActions";
 
 const Languages = [
   {
@@ -45,8 +45,10 @@ export default function StartForm() {
     dispatch(changeSelectedLang(event.target.value))
   }
   const handleNextClick = () => {
-    if (username !== "" && selectedLang !== "")
+    if (username !== "" && selectedLang !== "") {
+      dispatch(updateQuestionsWithUsername())
       dispatch(changeSteps(2));
+    }
     console.log(step);
   }
 

@@ -1,7 +1,8 @@
 export const CREATION_TYPES = {
   CHANGE_USERNAME: "CHANGE_USERNAME",
   CHANGE_SELECTED_LANG: "CHANGE_SELECTED_LANG",
-  ADD_SUGGESTED_QUESTIONS: "ADD_SUGGESTED_QUESTIONS",
+  UPDATE_QUESTIONS_WITH_USERNAME: "UPDATE_QUESTIONS_WITH_USERNAME",
+  SET_QUESTIONS: "SET_QUESTIONS",
   CHANGE_QUESTION: "CHANGE_QUESTION",
   CHANGE_ANSWER: "CHANGE_ANSWER",
   ADD_NEW_ANSWER: "ADD_NEW_ANSWER",
@@ -31,6 +32,28 @@ export function CreateQuizReducer(
       return {
         ...state,
         selectedLang: payload,
+      };
+    }
+
+    case CREATION_TYPES.SET_QUESTIONS: {
+      return {
+        ...state,
+        questions: payload,
+      };
+    }
+
+    case CREATION_TYPES.UPDATE_QUESTIONS_WITH_USERNAME: {
+      //!
+      const updatedQuestions = state.questions.map((question) => {
+        question[state.selectedLang] = question[state.selectedLang].replace(
+          "[USERNAME]",
+          state.username
+        );
+        return question;
+      });
+      return {
+        ...state,
+        questions: updatedQuestions,
       };
     }
 
@@ -73,73 +96,73 @@ export function CreateQuizReducer(
     }
 
     case CREATION_TYPES.ADD_NEW_ANSWER: {
-      const { id } = payload
-      const updatedQuestions = state.questions.map(question => {
+      const { id } = payload;
+      const updatedQuestions = state.questions.map((question) => {
         if (question.id === id) {
           question.answers.push({
             id: getLastId(state.questions) + 1,
             answer: {
               [state.selectedLang]: "",
             },
-          })
+          });
         }
-        return question
-      })
+        return question;
+      });
       return {
         ...state,
         questions: updatedQuestions,
-      }
+      };
     }
-   
+
     case CREATION_TYPES.REMOVE_ANSWER: {
-      const { answerId, questionId } = payload
+      const { answerId, questionId } = payload;
       const selectedQuestion = state.questions.find(
-        question => question.id === questionId
-      )
-      const updatedAnswers = selectedQuestion.answers.filter(item => {
+        (question) => question.id === questionId
+      );
+      const updatedAnswers = selectedQuestion.answers.filter((item) => {
         if (item.id !== answerId) {
-          return item
+          return item;
         }
-      })
-      selectedQuestion.answers = updatedAnswers
-      const updatedQuestions = state.questions.map(item => {
+      });
+      selectedQuestion.answers = updatedAnswers;
+      const updatedQuestions = state.questions.map((item) => {
         if (item.id === selectedQuestion.id) {
-          item = selectedQuestion
+          item = selectedQuestion;
         }
-        return item
-      })
+        return item;
+      });
       return {
         ...state,
         questions: updatedQuestions,
-      }
+      };
     }
 
     case CREATION_TYPES.SELECT_CORRECT_ANSWER: {
-      const { answerId, questionId } = payload
+      const { answerId, questionId } = payload;
       const selectedQuestion = state.questions.find(
-        question => question.id === questionId
-      )
-      const updatedAnswers = selectedQuestion.answers.map(item => {
-        return { ...item, isSelected: item.id === answerId }
-      })
-      selectedQuestion.answers = updatedAnswers
-      const updatedQuestions = state.questions.map(item => {
+        (question) => question.id === questionId
+      );
+      const updatedAnswers = selectedQuestion.answers.map((item) => {
+        return { ...item, isSelected: item.id === answerId };
+      });
+      selectedQuestion.answers = updatedAnswers;
+      const updatedQuestions = state.questions.map((item) => {
         if (item.id === selectedQuestion.id) {
-          item = selectedQuestion
+          item = selectedQuestion;
         }
-        return item
-      })
+        return item;
+      });
       return {
         ...state,
         questions: updatedQuestions,
-      }
+      };
     }
 
     case CREATION_TYPES.CHANGE_STEP: {
       return {
         ...state,
         step: payload,
-      }
+      };
     }
 
     default:

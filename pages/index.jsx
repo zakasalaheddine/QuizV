@@ -1,15 +1,21 @@
-
+import axios from 'axios'
 import { SlideFromRightToLeft, FadeInAnnimation } from '../components/FramerMotionAnnimations'
 import { TitleStyled, ImageLogo } from '../components/StyledTags'
 import Steps from '../components/Steps'
 import StartForm from '../components/StartForm'
 import QuestionForm from '../components/QuestionForm'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import CreateQuizContext from '../context/CreateQuizContext'
+import { setQuestions } from '../context/CreateQuizActions'
 
-export default function Home() {
-  const [quizState] = useContext(CreateQuizContext);
+export default function Home({ quiz }) {
+  const [quizState, dispatch] = useContext(CreateQuizContext);
 
+  useEffect(() => {
+    dispatch(setQuestions(quiz.QuizQuestion))
+  }, [])
+
+  console.log(quizState);
   const returnSteppedComponent = () => {
     switch (quizState.step) {
       case 1:
@@ -49,4 +55,13 @@ export default function Home() {
       </footer>
     </div>
   )
+}
+
+export async function getServerSideProps(context) {
+  const quiz = await axios.get('http://localhost:1337/quizzes/1');
+  return {
+    props: {
+      quiz: quiz.data
+    }, // will be passed to the page component as props
+  }
 }
