@@ -1,9 +1,9 @@
 
-import { SlideFromRightToLeft, FadeInAnnimation } from './components/FramerMotionAnnimations'
-import { TitleStyled, ImageLogo } from './components/StyledTags'
-import Steps from './components/Steps'
-import StartForm from './components/StartForm'
-import QuestionForm from './components/QuestionForm'
+import { SlideFromRightToLeft, FadeInAnnimation } from '../components/FramerMotionAnnimations'
+import { TitleStyled, ImageLogo } from '../components/StyledTags'
+import Steps from '../components/Steps'
+import StartForm from '../components/StartForm'
+import QuestionForm from '../components/QuestionForm'
 
 export default function Home() {
   return (
