@@ -84,7 +84,7 @@ export const LabelStyled = styled.label`
 
 export const CardStyled = styled.div`
   @media (min-width: 992px) {
-    width: 60%;
+    width: ${props => props.small ? '60%' : '100%'};
   }
   margin-top: 20px;
   margin-bottom: 30px;
@@ -122,4 +122,47 @@ export const ButtonStyled = styled.button`
   box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
 `
 
+export const TextAreaStyled = styled.textarea`
+  font-weight: bold;
+  font-size: 1.2rem;
+  border-radius: 20px;
+  box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+`
+
+export const Switch = styled(motion.div)`
+  margin: 0 10px 0 0;
+  width: 50px;
+  height: 30px;
+  border-radius: 100px;
+  padding: 10px 5px;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  background-color: ${props => props.isSelected ? '#22cc88' : '#dddddd'};
+  justify-content: ${props => props.isSelected ? 'flex-end' : 'flex-start'};
+  box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+  div{
+    width: 20px;
+    height: 20px;
+    background-color: #ffffff;
+    border-radius: 200px;
+    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.02);
+  }
+`
+
+export const DeleteButton = styled.button`
+  margin: 0 0 0 10px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  outline: none;
+  height: 30px;
+  width: 30px;
+  color: #FFFFFF;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+`
 

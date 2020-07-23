@@ -3,6 +3,7 @@ import { SlideFromRightToLeft, FadeInAnnimation } from './components/FramerMotio
 import { TitleStyled, ImageLogo } from './components/StyledTags'
 import Steps from './components/Steps'
 import StartForm from './components/StartForm'
+import QuestionForm from './components/QuestionForm'
 
 export default function Home() {
   return (
@@ -17,9 +18,10 @@ export default function Home() {
               className="img-fluid mx-auto d-block" />
             <TitleStyled variants={SlideFromRightToLeft} initial="initial" animate="animate">
               How well do your friends know you ?
-              </TitleStyled>
-            <Steps />
-            <StartForm />
+            </TitleStyled>
+            <QuestionForm />
+            {/* <Steps />
+            <StartForm /> */}
           </div>
           <div className="col-md-2"></div>
         </div>

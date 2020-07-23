@@ -3,7 +3,7 @@ import { SlideFromRightToLeft } from "./FramerMotionAnnimations";
 
 export default function StartForm() {
   return (
-    <CardStyled className="card">
+    <CardStyled className="card" small={true}>
       <div className="card-body">
         <div className="mb-3">
           <LabelStyled htmlFor="location">Where are you from</LabelStyled>
