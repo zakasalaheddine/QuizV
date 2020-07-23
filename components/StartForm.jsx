@@ -1,36 +1,76 @@
 import { LabelStyled, CardStyled, SelectStyled, InputTextStyled, ButtonStyled } from "./StyledTags";
 import { SlideFromRightToLeft } from "./FramerMotionAnnimations";
+import { useContext } from "react";
+import CreateQuizContext from "../context/CreateQuizContext";
+import { changeUsername, changeSelectedLang, changeSteps } from "../context/CreateQuizActions";
+
+const Languages = [
+  {
+    code: "fr",
+    name: "Français"
+  },
+  {
+    code: "en",
+    name: "English"
+  },
+  {
+    code: "ar",
+    name: "Arabic"
+  },
+  {
+    code: "es",
+    name: "Español"
+  },
+  {
+    code: "it",
+    name: "Italiano"
+  },
+  {
+    code: "po",
+    name: "Português"
+  },
+  {
+    code: "no",
+    name: "Norsk"
+  },
+]
 
 export default function StartForm() {
+  const [quizState, dispatch] = useContext(CreateQuizContext);
+  const { username, selectedLang, step } = quizState;
+  const handleChangeUsername = (event) => {
+    dispatch(changeUsername(event.target.value))
+  }
+  const handleChangeSelectedLang = (event) => {
+    dispatch(changeSelectedLang(event.target.value))
+  }
+  const handleNextClick = () => {
+    if (username !== "" && selectedLang !== "")
+      dispatch(changeSteps(2));
+    console.log(step);
+  }
+
   return (
     <CardStyled className="card" small={true}>
       <div className="card-body">
         <div className="mb-3">
-          <LabelStyled htmlFor="location">Where are you from</LabelStyled>
-          <SelectStyled className="custom-select" id="location" required>
-            <option>North America</option>
-            <option>South America</option>
-            <option>Europe</option>
-            <option>Asia</option>
-            <option>Africa</option>
-          </SelectStyled>
-        </div>
-        <div className="mb-3">
-          <LabelStyled htmlFor="language">Select a language</LabelStyled>
+          <LabelStyled htmlFor="language">Select your language</LabelStyled>
           <SelectStyled variants={SlideFromRightToLeft} initial="initial" animate="animate"
-            className="custom-select" id="language" required>
-            <option>English</option>
-            <option>Espanol</option>
-            <option>Français</option>
+            className="custom-select" id="language" required value={selectedLang} onChange={handleChangeSelectedLang}>
+            {
+              Languages.map(lang => (
+                <option key={lang.code} value={lang.code}>{lang.name}</option>
+              ))
+            }
           </SelectStyled>
         </div>
 
         <div className="mb-3">
           <LabelStyled htmlFor="username">what is your name</LabelStyled>
           <InputTextStyled type="text" className="form-control" id="username"
-            placeholder="John..." />
+            placeholder="John..." value={username} onChange={handleChangeUsername} />
         </div>
-        <ButtonStyled className="btn btn-primary btn-block">Next</ButtonStyled>
+        <ButtonStyled onClick={handleNextClick} className="btn btn-primary btn-block">Next</ButtonStyled>
       </div>
     </CardStyled>
   )
