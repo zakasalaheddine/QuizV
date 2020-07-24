@@ -1,3 +1,5 @@
+import { getLastId } from "../helpers/CreateQuizHelpers";
+
 export const CREATION_TYPES = {
   CHANGE_USERNAME: "CHANGE_USERNAME",
   CHANGE_SELECTED_LANG: "CHANGE_SELECTED_LANG",
@@ -43,7 +45,6 @@ export function CreateQuizReducer(
     }
 
     case CREATION_TYPES.UPDATE_QUESTIONS_WITH_USERNAME: {
-      //!
       const updatedQuestions = state.questions.map((question) => {
         question[state.selectedLang] = question[state.selectedLang].replace(
           "[USERNAME]",
@@ -61,7 +62,7 @@ export function CreateQuizReducer(
       const { value, id } = payload;
       const updatedQuestions = state.questions.map((question) => {
         if (question.id === id) {
-          question.question[state.selectedLang] = value;
+          question[state.selectedLang] = value;
         }
         return question;
       });
@@ -76,13 +77,13 @@ export function CreateQuizReducer(
       const selectedQuestion = state.questions.find(
         (question) => question.id === questionId
       );
-      const updatedAnswers = selectedQuestion.answers.map((item) => {
+      const updatedAnswers = selectedQuestion.QuizAnswer.map((item) => {
         if (item.id === answerId) {
-          item.answer[state.selectedLang] = value;
+          item[state.selectedLang] = value;
         }
         return item;
       });
-      selectedQuestion.answers = updatedAnswers;
+      selectedQuestion.QuizAnswer = updatedAnswers;
       const updatedQuestions = state.questions.map((item) => {
         if (item.id === selectedQuestion.id) {
           item = selectedQuestion;
@@ -99,11 +100,9 @@ export function CreateQuizReducer(
       const { id } = payload;
       const updatedQuestions = state.questions.map((question) => {
         if (question.id === id) {
-          question.answers.push({
+          question.QuizAnswer.push({
             id: getLastId(state.questions) + 1,
-            answer: {
-              [state.selectedLang]: "",
-            },
+            [state.selectedLang]: "",
           });
         }
         return question;
@@ -119,12 +118,12 @@ export function CreateQuizReducer(
       const selectedQuestion = state.questions.find(
         (question) => question.id === questionId
       );
-      const updatedAnswers = selectedQuestion.answers.filter((item) => {
+      const updatedAnswers = selectedQuestion.QuizAnswer.filter((item) => {
         if (item.id !== answerId) {
           return item;
         }
       });
-      selectedQuestion.answers = updatedAnswers;
+      selectedQuestion.QuizAnswer = updatedAnswers;
       const updatedQuestions = state.questions.map((item) => {
         if (item.id === selectedQuestion.id) {
           item = selectedQuestion;
@@ -142,10 +141,10 @@ export function CreateQuizReducer(
       const selectedQuestion = state.questions.find(
         (question) => question.id === questionId
       );
-      const updatedAnswers = selectedQuestion.answers.map((item) => {
+      const updatedAnswers = selectedQuestion.QuizAnswer.map((item) => {
         return { ...item, isSelected: item.id === answerId };
       });
-      selectedQuestion.answers = updatedAnswers;
+      selectedQuestion.QuizAnswer = updatedAnswers;
       const updatedQuestions = state.questions.map((item) => {
         if (item.id === selectedQuestion.id) {
           item = selectedQuestion;

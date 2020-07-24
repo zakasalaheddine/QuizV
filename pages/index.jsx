@@ -3,10 +3,10 @@ import { SlideFromRightToLeft, FadeInAnnimation } from '../components/FramerMoti
 import { TitleStyled, ImageLogo } from '../components/StyledTags'
 import Steps from '../components/Steps'
 import StartForm from '../components/StartForm'
-import QuestionForm from '../components/QuestionForm'
 import { useContext, useEffect } from 'react'
 import CreateQuizContext from '../context/CreateQuizContext'
 import { setQuestions } from '../context/CreateQuizActions'
+import QuestionsContainer from '../components/QuestionsContainer'
 
 export default function Home({ quiz }) {
   const [quizState, dispatch] = useContext(CreateQuizContext);
@@ -14,8 +14,6 @@ export default function Home({ quiz }) {
   useEffect(() => {
     dispatch(setQuestions(quiz.QuizQuestion))
   }, [])
-
-  console.log(quizState);
   const returnSteppedComponent = () => {
     switch (quizState.step) {
       case 1:
@@ -26,7 +24,7 @@ export default function Home({ quiz }) {
           </>
         )
       case 2: {
-        return <QuestionForm />
+        return <QuestionsContainer />
       }
       default:
         break
