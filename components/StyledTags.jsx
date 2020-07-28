@@ -166,3 +166,25 @@ export const DeleteButton = styled.button`
   box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
 `
 
+export const UlStyled = styled.ul`
+  list-style-type: none;
+`
+
+export const SpanWithIcon = styled.span`
+  padding: 10px 15px;
+  i{
+    font-size: 1.5em;
+    color: blue;
+  }
+`
+
+export const LinkAsBuuton = styled.a`
+  background-color: ${props => props.backColor};
+  font-weight: bold;
+  font-size: 1.2rem;
+  outline: none;
+  border-radius: 20px;
+  color: #FFFFFF;
+  box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+`
+

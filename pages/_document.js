@@ -20,7 +20,7 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,800;1,300;1,400;1,800&display=swap"
             rel="stylesheet"
           ></link>
-          <script src="https://kit.fontawesome.com/6e0ec593a2.js" crossorigin="anonymous"></script>
+          <script src="https://kit.fontawesome.com/6e0ec593a2.js" crossOrigin="anonymous"></script>
         </Head>
         <body>
           <Main />

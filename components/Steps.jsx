@@ -1,12 +1,6 @@
 import { StepStyled } from "./StyledTags";
 
-const steps = [
-  "Let's create your quiz!",
-  "Share it with your friends",
-  "See their results & discover your real best friends"
-]
-
-export default function Steps() {
+export default function Steps({ steps }) {
   return (
     <div className="d-block">
       {steps.map((step, idx) => (

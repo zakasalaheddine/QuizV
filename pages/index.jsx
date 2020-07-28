@@ -8,6 +8,11 @@ import CreateQuizContext from '../context/CreateQuizContext'
 import { setQuestions } from '../context/CreateQuizActions'
 import QuestionsContainer from '../components/QuestionsContainer'
 
+const steps = [
+  "Let's create your quiz!",
+  "Share it with your friends",
+  "See their results & discover your real best friends"
+]
 export default function Home({ quiz }) {
   const [quizState, dispatch] = useContext(CreateQuizContext);
 
@@ -19,7 +24,7 @@ export default function Home({ quiz }) {
       case 1:
         return (
           <>
-            <Steps />
+            <Steps steps={steps} />
             <StartForm />
           </>
         )

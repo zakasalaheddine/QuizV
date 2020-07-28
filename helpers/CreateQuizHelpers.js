@@ -19,3 +19,7 @@ export const validateQuestionsHasSelectedAnswers = (questions) => {
   });
   return questionWithSelectedAnswer;
 };
+
+export const generateRandomSlug = () => {
+  return Math.random().toString(36).slice(2);
+}
