@@ -186,5 +186,8 @@ export const LinkAsBuuton = styled.a`
   border-radius: 20px;
   color: #FFFFFF;
   box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+  &:hover{
+    color: #FFFFFF;
+  }
 `
 

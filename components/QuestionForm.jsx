@@ -8,7 +8,7 @@ import { questionChanged, addAnswerToQuestions } from "../context/CreateQuizActi
 export default function QuestionForm({ question }) {
   const [_, dispatch] = useContext(CreateQuizContext)
 
-  const handleQuestionChange = () => {
+  const handleQuestionChange = (event) => {
     dispatch(questionChanged(event.target.value, question.id))
   }
 
