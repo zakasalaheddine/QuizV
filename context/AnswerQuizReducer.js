@@ -1,6 +1,8 @@
 export const ANSWER_TYPES = {
   SET_DATA: "SET_DATA",
   CHANGE_USERNAME: "CHANGE_USERNAME",
+  START_QUIZ: "START_QUIZ",
+  SELECT_ANSWER: "SELECT_ANSWER",
 };
 
 export const answersInitialState = {
@@ -9,6 +11,8 @@ export const answersInitialState = {
   lang: "en",
   quiz: null,
   username: "",
+  quizStarted: false,
+  currentQuestion: null,
 };
 
 export function AnswerQuizReducer(
@@ -26,12 +30,40 @@ export function AnswerQuizReducer(
         quiz: quiz,
       };
     }
-
     case ANSWER_TYPES.CHANGE_USERNAME: {
       return {
         ...state,
         username: payload,
       };
+    }
+    case ANSWER_TYPES.START_QUIZ: {
+      return {
+        ...state,
+        currentQuestion: state.quiz[0],
+        quizStarted: true,
+      };
+    }
+    case ANSWER_TYPES.SELECT_ANSWER: {
+      const { answerId } = payload;
+      const { currentQuestion } = state;
+      const updatedAnswers = currentQuestion.QuizAnswer.map((answer) => {
+        if (answer.id === answerId) {
+          if (answer.isSelected) {
+            return { ...answer, isCorrect: true, isClicked: true };
+          }
+          return { ...answer, isClicked: true, isCorrect: false };
+        }
+        if (answer.isSelected) {
+          return { ...answer, isClicked: true, isCorrect: true };
+        }
+        return { ...answer, isClicked: false, isCorrect: false };
+      });
+      state.currentQuestion = {
+        ...currentQuestion,
+        QuizAnswer: updatedAnswers,
+        isAnswered: true,
+      };
+      return { ...state };
     }
     default:
       return state;

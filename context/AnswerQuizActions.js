@@ -14,3 +14,14 @@ export const changeResponderUserName = (username) => {
     payload: username,
   };
 };
+
+export const startQuiz = () => {
+  return { type: ANSWER_TYPES.START_QUIZ };
+};
+
+export const selectAnswerToQuiz = (id) => {
+  return {
+    type: ANSWER_TYPES.SELECT_ANSWER,
+    payload: { answerId: id },
+  };
+};

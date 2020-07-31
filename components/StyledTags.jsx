@@ -120,74 +120,78 @@ export const ButtonStyled = styled.button`
   outline: none;
   border-radius: 20px;
   box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+  &.clicked{
+    color: #FFFFFF;
+    background-color: ${props => props.isCorrect ? "#26de81" : "#fc5c65"};
+  }
 `
 
 export const TextAreaStyled = styled.textarea`
-  font-weight: bold;
-  font-size: 1.2rem;
-  border-radius: 20px;
-  box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+font-weight: bold;
+font-size: 1.2rem;
+border-radius: 20px;
+box-shadow: 0 2px 3px rgba(10, 10, 10, .1), 0 0 0 1px rgba(10, 10, 10, .1);
 `
 
 export const Switch = styled(motion.div)`
-  margin: 0 10px 0 0;
-  width: 50px;
-  height: 30px;
-  border-radius: 100px;
-  padding: 10px 5px;
-  display: flex;
-  cursor: pointer;
-  align-items: center;
-  background-color: ${props => props.isSelected ? '#22cc88' : '#dddddd'};
-  justify-content: ${props => props.isSelected ? 'flex-end' : 'flex-start'};
-  box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
-  div{
-    width: 20px;
-    height: 20px;
-    background-color: #ffffff;
-    border-radius: 200px;
-    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.02);
-  }
+margin: 0 10px 0 0;
+width: 50px;
+height: 30px;
+border-radius: 100px;
+padding: 10px 5px;
+display: flex;
+cursor: pointer;
+align-items: center;
+background-color: ${ props => props.isSelected ? '#22cc88' : '#dddddd'};
+justify-content: ${ props => props.isSelected ? 'flex-end' : 'flex-start'};
+box-shadow: 0 2px 3px rgba(10, 10, 10, .1), 0 0 0 1px rgba(10, 10, 10, .1);
+div{
+  width: 20px;
+  height: 20px;
+  background-color: #ffffff;
+  border-radius: 200px;
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.02);
+}
 `
 
 export const DeleteButton = styled.button`
-  margin: 0 0 0 10px;
-  font-weight: bold;
-  font-size: 1.2rem;
-  outline: none;
-  height: 30px;
-  width: 30px;
-  color: #FFFFFF;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 30px;
-  box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+margin: 0 0 0 10px;
+font-weight: bold;
+font-size: 1.2rem;
+outline: none;
+height: 30px;
+width: 30px;
+color: #FFFFFF;
+text-align: center;
+display: flex;
+justify-content: center;
+align-items: center;
+border-radius: 30px;
+box-shadow: 0 2px 3px rgba(10, 10, 10, .1), 0 0 0 1px rgba(10, 10, 10, .1);
 `
 
 export const UlStyled = styled.ul`
-  list-style-type: none;
+list-style-type: none;
 `
 
 export const SpanWithIcon = styled.span`
-  padding: 10px 15px;
-  i{
-    font-size: 1.5em;
-    color: blue;
-  }
+padding: 10px 15px;
+i{
+  font-size: 1.5em;
+  color: blue;
+}
 `
 
 export const LinkAsBuuton = styled.a`
-  background-color: ${props => props.backColor};
-  font-weight: bold;
-  font-size: 1.2rem;
-  outline: none;
-  border-radius: 20px;
-  color: #FFFFFF;
-  box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+background-color: ${ props => props.backColor};
+font-weight: bold;
+font-size: 1.2rem;
+outline: none;
+border-radius: 20px;
+color: #FFFFFF;
+box-shadow: 0 2px 3px rgba(10, 10, 10, .1), 0 0 0 1px rgba(10, 10, 10, .1);
   &:hover{
-    color: #FFFFFF;
-  }
+  color: #FFFFFF;
+}
 `
 
