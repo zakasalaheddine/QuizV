@@ -195,3 +195,27 @@ box-shadow: 0 2px 3px rgba(10, 10, 10, .1), 0 0 0 1px rgba(10, 10, 10, .1);
 }
 `
 
+export const ModalContainer = styled(motion.div)`
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  top: 0;
+  left: 0;
+  display: flex;
+  color: #FFF;
+  justify-content: center;
+  align-items: flex-end;
+`
+
+export const ResultContainer = styled(motion.div)`
+  width: 100%;
+  background-color: #FFFFFF;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 10px;
+`

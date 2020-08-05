@@ -2,6 +2,7 @@ import { CardStyled, ButtonStyled } from "../StyledTags";
 import { useContext } from "react";
 import AnswerQuizContext from "../../context/AnswerQuizContext";
 import { selectAnswerToQuiz } from "../../context/AnswerQuizActions";
+import ResultModal from "./ResultModal";
 
 export default function QuizzesContainer() {
   const [answerState, dispatchAnswer] = useContext(AnswerQuizContext)
@@ -10,6 +11,7 @@ export default function QuizzesContainer() {
     dispatchAnswer(selectAnswerToQuiz(selectedAnswer.id))
   }
   return (
+    <>
     <div className="quizzes-container">
       <CardStyled>
         <div className="card-header"><h3>{currentQuestion[lang]}</h3></div>
@@ -28,5 +30,7 @@ export default function QuizzesContainer() {
         </div>
       </CardStyled>
     </div>
+    <ResultModal isOn={currentQuestion.isAnswered} />
+    </>
   )
 }

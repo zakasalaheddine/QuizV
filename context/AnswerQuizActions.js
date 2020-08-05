@@ -25,3 +25,9 @@ export const selectAnswerToQuiz = (id) => {
     payload: { answerId: id },
   };
 };
+
+export const nextQuestion = () => {
+  return {
+    type: ANSWER_TYPES.NEXT_QUESTION
+  }
+}
