@@ -18,6 +18,7 @@ export default function QuizPage({ slug, data }) {
       router.push("/")
       return;
     }
+    console.log(data)
     const localSlug = localStorage.getItem("QUIZV_SLUG")
     if (localSlug && localSlug === slug) {
       setQuizIsMine(true)

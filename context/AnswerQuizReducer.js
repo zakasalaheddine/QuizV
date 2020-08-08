@@ -4,7 +4,6 @@ export const ANSWER_TYPES = {
   START_QUIZ: "START_QUIZ",
   SELECT_ANSWER: "SELECT_ANSWER",
   NEXT_QUESTION: "NEXT_QUESTION",
-  SHOW_RESULT: "SHOW_RESULT"
 };
 
 export const answersInitialState = {
@@ -16,6 +15,9 @@ export const answersInitialState = {
   quizStarted: false,
   currentQuestion: null,
   currentIndex: 0,
+  score: 0,
+  isEnd: false,
+  showResults: false,
 };
 
 export function AnswerQuizReducer(
@@ -68,19 +70,28 @@ export function AnswerQuizReducer(
         QuizAnswer: updatedAnswers,
         isAnswered: true,
         isCorrect: isCorrect,
-        isEnd: false,
       };
-      return { ...state };
+      if (isCorrect) state.score += 1;
+      return {
+        ...state,
+        isEnd: state.quiz.length <= state.currentIndex + 1 ? true : false,
+      };
     }
     case ANSWER_TYPES.NEXT_QUESTION: {
       state.quiz[state.currentIndex] = state.currentQuestion;
-      console.log(state.quiz.length, state.currentIndex + 2)
-      return {
-        ...state,
-        currentQuestion: state.quiz[state.currentIndex + 1],
-        currentIndex: state.currentIndex + 1,
-        isEnd: state.quiz.length <= state.currentIndex + 2 ? true : false,
-      };
+      if (state.isEnd) {
+        return {
+          ...state,
+          showResults: true,
+        };
+      } else {
+        console.log(state.isEnd);
+        return {
+          ...state,
+          currentQuestion: state.quiz[state.currentIndex + 1],
+          currentIndex: state.currentIndex + 1,
+        };
+      }
     }
     default:
       return state;
