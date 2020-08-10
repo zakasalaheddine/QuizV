@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 
 export const TitleStyled = styled(motion.h1)`
   text-align: center;
+  font-weight: 900;
   text-transform: uppercase;
   font-size: 1.9rem;
 `
@@ -20,16 +21,15 @@ export const StepStyled = styled(motion.div)`
     min-width: 250px;
     display: block;
     border-radius: 5px;
-    background: linear-gradient(to right, #abbd73 35%, #d6e2ad 100%);
+    background: linear-gradient(to right, ${props => props.theme.Colors.blue} 35%, ${props => props.theme.Colors.lightBlue} 100%);
     margin-bottom: 15px;
     margin-left: auto;
     margin-right: auto;
-    padding: 15px 25px 15px 40px;
+    padding: 10px 25px 8px 40px;
     color: darkslategray;
-    box-shadow: 1px 2px 1px -1px #777;
     transition: background 200ms ease-in-out;
     &:hover {
-      background: linear-gradient(to right, #abbd73 0%, #abbd73 100%);
+      background: linear-gradient(to right, ${props => props.theme.Colors.blue} 0%, ${props => props.theme.Colors.darkBlue} 100%);
     }
   }
   .shadow {
@@ -38,10 +38,10 @@ export const StepStyled = styled(motion.div)`
       z-index: -1;
       position: absolute;
       content: "";
-      bottom: 13px;
-      right: 7px;
-      width: 75%;
-      top: 0;
+      bottom: 18px;
+      right: 10px;
+      width: 80%;
+      top: 5px;
       box-shadow: 0 15px 10px #777;
       transform: rotate(4deg);
       transition: all 150ms ease-in-out;
@@ -56,7 +56,7 @@ export const StepStyled = styled(motion.div)`
   }
   .circle {
     position: absolute;
-    top: 17px;
+    top: 10px;
     left: 15px;
     border-radius: 50%;
     box-shadow: inset 1px 1px 1px 0px rgba(0, 0, 0, 0.5),
@@ -69,8 +69,8 @@ export const StepStyled = styled(motion.div)`
     text-transform: uppercase;
     vertical-align: top;
     padding-left: 10px;
-    font-weight: bold;
-    font-size: 1rem;
+    font-weight: 800;
+    font-size: .8rem;
   }
 `
 
@@ -86,13 +86,22 @@ export const CardStyled = styled.div`
   @media (min-width: 992px) {
     width: ${props => props.small ? '60%' : '100%'};
   }
+  background-color: #FFFFFF;
   margin-top: 20px;
   margin-bottom: 30px;
   margin-left: auto;
   margin-right: auto;
   border-radius: 20px;
-  box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+  /* box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1); */
+  box-shadow: 0px 10px 1px ${props => props.theme.Colors.lightDark}, 
+              0 10px 20px ${props => props.theme.Colors.lightDark};
   overflow: hidden;
+  .card-header{
+    background-color: ${props => props.theme.Colors.blue};
+    color: ${props => props.theme.Colors.dark};
+    text-transform: uppercase;
+    text-align: center;
+  }
 `
 
 export const SelectStyled = styled(motion.select)`
@@ -218,4 +227,14 @@ export const ResultContainer = styled(motion.div)`
   justify-content: center;
   align-items: center;
   padding: 20px 10px;
+`
+
+export const NextButton = styled.button`
+  font-weight: bold;
+  font-size: 1.2rem;
+  outline: none;
+  border-radius: 20px;
+  box-shadow: 0px 10px 1px ${props => props.theme.Colors.lightDark}, 
+              0 10px 20px ${props => props.theme.Colors.lightDark};
+  
 `

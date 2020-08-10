@@ -1,4 +1,6 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
+import { ThemeProvider } from "emotion-theming";
+import { defaultTheme } from "../themes/DefaultTheme";
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -20,7 +22,10 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,800;1,300;1,400;1,800&display=swap"
             rel="stylesheet"
           ></link>
-          <script src="https://kit.fontawesome.com/6e0ec593a2.js" crossOrigin="anonymous"></script>
+          <script
+            src="https://kit.fontawesome.com/6e0ec593a2.js"
+            crossOrigin="anonymous"
+          ></script>
         </Head>
         <body>
           <Main />
@@ -40,7 +45,8 @@ class MyDocument extends Document {
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossOrigin="anonymous"
           />
-          <NextScript />
+
+            <NextScript />
         </body>
       </Html>
     );

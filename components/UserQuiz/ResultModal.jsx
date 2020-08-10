@@ -1,4 +1,4 @@
-import { ModalContainer, ResultContainer, TitleStyled, ButtonStyled } from "../StyledTags";
+import { ModalContainer, ResultContainer, TitleStyled, ButtonStyled, NextButton } from "../StyledTags";
 import { AnimatePresence } from "framer-motion";
 import { useContext } from "react";
 import AnswerQuizContext from "../../context/AnswerQuizContext";
@@ -31,9 +31,9 @@ export default function ResultModal({ isOn }) {
             <ResultContainer initial={{ y: 300 }} animate={{ y: 0 }} exit={{ y: 200 }}>
               <TitleStyled>RESULT</TitleStyled>
               <TitleStyled>{isCorrect ? "IT'S CORRECT" : "IT'S NOT CORRECT"}</TitleStyled>
-              <ButtonStyled className={`btn btn-success`} onClick={nextQuestionHandler}>
+              <NextButton className={`btn btn-success`} onClick={nextQuestionHandler}>
                 {isEnd ? "SHOW RESULTS" : "NEXT QUESTION"}
-              </ButtonStyled>
+              </NextButton>
             </ResultContainer>
           </ModalContainer>
         )
