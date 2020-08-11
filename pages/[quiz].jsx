@@ -37,7 +37,7 @@ export default function QuizPage({ slug, data }) {
   const renderCorrectComponent = () => {
     if (loading) return <p>Loading ....</p>
     if (quizIsMine) return <QuizDashboard slug={slug} quizData={data} />
-    if(alreadyAnswerd) return <Results />
+    if (alreadyAnswerd) return <Results />
     return <UserQuiz creator={answerState.creatorName} />
   }
 
@@ -63,8 +63,13 @@ export default function QuizPage({ slug, data }) {
 export async function getServerSideProps({ params, res }) {
   try {
     const { quiz } = params
-    const res = await Axios.get(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/user-quizzes?slug=${quiz}`)
-    const quizData = res.data
+    const result = await Axios.get(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/user-quizzes?slug=${quiz}`)
+    const quizData = result.data
+    if (quizData.length === 0 || result.data[0].isDeleted) {
+      res.writeHead(302, { Location: '/' });
+      res.end();
+      return
+    }
     if (quizData.length > 0) {
       return {
         props: { slug: quiz, data: quizData[0] },

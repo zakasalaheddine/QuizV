@@ -3,14 +3,22 @@ import Steps from "./Steps";
 import { FadeInAnnimation } from "./FramerMotionAnnimations";
 import { PLATFORMS, getSocialMediaUrl } from "../helpers/ShareQuizHelpers";
 import AnswersTable from "./AnswersTable";
+import Axios from "axios";
+import { useRouter } from "next/router";
 
 const steps = [
   "Now simply share your quiz link with all your friends",
   "Your friends will try to match your answers & get a score out of 10."
 ]
 
-export default function QuizDashboard({ slug, quizData }) {
+export default function QuizDashboard({ quizData }) {
+  const router = useRouter();
   const url = "https://google.com"
+  const handleDeleteQuiz = async () => {
+    await Axios.delete(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/user-quizzes/${quizData.id}/deleteAnswer`);
+    localStorage.removeItem("QUIZV_SLUG")
+    router.push('/')
+  }
   return (
     <div className="mb-5">
       <TitleStyled>Your quiz is ready</TitleStyled>
@@ -35,7 +43,7 @@ export default function QuizDashboard({ slug, quizData }) {
         </LinkAsBuuton>
       </div>
 
-      <ButtonStyled className="btn btn-block btn-danger">Delete my quiz</ButtonStyled>
+      <ButtonStyled className="btn btn-block btn-danger" onClick={handleDeleteQuiz}>Delete my quiz</ButtonStyled>
     </div>
   )
 }

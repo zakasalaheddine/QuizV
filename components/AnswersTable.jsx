@@ -9,7 +9,7 @@ export default function AnswersTable({ answers }) {
       return 0
     })
     setQuizAnswers(sortedAnswers)
-  }, [])
+  }, [answers])
   return (
     <div className="answers-table">
       {
@@ -19,7 +19,6 @@ export default function AnswersTable({ answers }) {
               <tr>
                 <th scope="col">Name</th>
                 <th scope="col">Score</th>
-                <th scope="col">View</th>
               </tr>
             </thead>
             <tbody>
@@ -28,7 +27,6 @@ export default function AnswersTable({ answers }) {
                   <tr key={id}>
                     <td>{username}</td>
                     <td>{score}</td>
-                    <td>Button</td>
                   </tr>
                 ))
               }
