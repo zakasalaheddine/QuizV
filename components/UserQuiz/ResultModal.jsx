@@ -21,7 +21,7 @@ export default function ResultModal({ isOn }) {
       answers: quiz
     }
     const result = await Axios.put(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/user-quizzes/${quizId}/answer`, data)
-    console.log(result.data)
+    localStorage.setItem(result.data.slug, JSON.stringify({...data, creatorName: result.data.username}))
   }
   return (
     <AnimatePresence>

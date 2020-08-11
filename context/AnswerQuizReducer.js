@@ -85,7 +85,6 @@ export function AnswerQuizReducer(
           showResults: true,
         };
       } else {
-        console.log(state.isEnd);
         return {
           ...state,
           currentQuestion: state.quiz[state.currentIndex + 1],

@@ -7,22 +7,27 @@ import UserQuiz from "../components/UserQuiz";
 import Axios from "axios";
 import AnswerQuizContext from "../context/AnswerQuizContext";
 import { setDataToAnswer } from "../context/AnswerQuizActions";
+import Results from "../components/UserQuiz/Results";
 
 export default function QuizPage({ slug, data }) {
   const router = useRouter();
   const [loading, setLoading] = useState(true)
   const [quizIsMine, setQuizIsMine] = useState(false)
+  const [alreadyAnswerd, setAlreadyAnswerd] = useState(false)
   const [answerState, dispatchAnswer] = useContext(AnswerQuizContext)
   useEffect(() => {
     if (!data) {
       router.push("/")
       return;
     }
-    console.log(data)
     const localSlug = localStorage.getItem("QUIZV_SLUG")
     if (localSlug && localSlug === slug) {
       setQuizIsMine(true)
     } else {
+      const AnswersData = localStorage.getItem(slug)
+      if (AnswersData) {
+        setAlreadyAnswerd(true)
+      }
       dispatchAnswer(setDataToAnswer(data))
       setQuizIsMine(false)
     }
@@ -31,7 +36,8 @@ export default function QuizPage({ slug, data }) {
 
   const renderCorrectComponent = () => {
     if (loading) return <p>Loading ....</p>
-    if (quizIsMine) return <QuizDashboard slug={slug} quizData={data}/>
+    if (quizIsMine) return <QuizDashboard slug={slug} quizData={data} />
+    if(alreadyAnswerd) return <Results />
     return <UserQuiz creator={answerState.creatorName} />
   }
 

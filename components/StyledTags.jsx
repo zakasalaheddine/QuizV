@@ -128,7 +128,7 @@ export const ButtonStyled = styled.button`
   font-size: 1.2rem;
   outline: none;
   border-radius: 20px;
-  box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+  box-shadow: 0 2px 3px rgba(10, 10, 10, .1), 0 0 0 1px rgba(10, 10, 10, .1);
   &.clicked{
     color: #FFFFFF;
     background-color: ${props => props.isCorrect ? "#26de81" : "#fc5c65"};
@@ -197,10 +197,13 @@ font-weight: bold;
 font-size: 1.2rem;
 outline: none;
 border-radius: 20px;
+border-color: ${ props => props.backColor};
 color: #FFFFFF;
 box-shadow: 0 2px 3px rgba(10, 10, 10, .1), 0 0 0 1px rgba(10, 10, 10, .1);
   &:hover{
   color: #FFFFFF;
+  background-color: ${ props => props.backColor};
+  border-color: ${ props => props.backColor};
 }
 `
 

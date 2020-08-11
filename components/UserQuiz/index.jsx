@@ -9,7 +9,7 @@ export default function UserQuiz({ creator }) {
 
   const [answerState, dispatchAnswer] = useContext(AnswerQuizContext)
   const { quizStarted, showResults } = answerState;
-
+  
   const renderComponent = () => {
     if (showResults) return <Results />
     if (quizStarted) return <QuizzesContainer />
@@ -18,8 +18,6 @@ export default function UserQuiz({ creator }) {
   return (
     <>
 
-      <TitleStyled>Prove how well you know</TitleStyled>
-      <TitleStyled>{creator}</TitleStyled>
       {renderComponent()}
     </>
   )
