@@ -31,7 +31,7 @@ export default function QuizPage({ slug, data }) {
 
   const renderCorrectComponent = () => {
     if (loading) return <p>Loading ....</p>
-    if (quizIsMine) return <QuizDashboard slug={slug} />
+    if (quizIsMine) return <QuizDashboard slug={slug} quizData={data}/>
     return <UserQuiz creator={answerState.creatorName} />
   }
 
