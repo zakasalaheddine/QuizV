@@ -2,10 +2,12 @@ import { CardStyled, LabelStyled, InputTextStyled, ButtonStyled } from "../Style
 import { useContext } from "react";
 import AnswerQuizContext from "../../context/AnswerQuizContext";
 import { changeResponderUserName, startQuiz } from "../../context/AnswerQuizActions";
+import { Translate } from "../../lang/StaticTexts";
 
 export default function UserAnswerForm() {
 
   const [answerState, dispatchAnswer] = useContext(AnswerQuizContext)
+  console.log({ answerState })
   const handleUsernameChange = (event) => {
     dispatchAnswer(changeResponderUserName(event.target.value))
   }
@@ -19,11 +21,11 @@ export default function UserAnswerForm() {
 
       <div className="card-body">
         <div className="mb-3">
-          <LabelStyled htmlFor="username">what is your name</LabelStyled>
+          <LabelStyled htmlFor="username">{Translate["what is your name"][answerState.lang]}</LabelStyled>
           <InputTextStyled value={answerState.username} type="text" className="form-control" id="username"
             placeholder="John..." onChange={handleUsernameChange} />
         </div>
-        <ButtonStyled onClick={startTheQuiz} className="btn btn-primary btn-block">GET STARTED</ButtonStyled>
+        <ButtonStyled onClick={startTheQuiz} className="btn btn-primary btn-block">{Translate['Next'][answerState.lang]}</ButtonStyled>
       </div>
     </CardStyled>
   )

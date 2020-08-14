@@ -5,6 +5,7 @@ import { ButtonStyled } from "./StyledTags";
 import { validateQuestionsHasSelectedAnswers, generateRandomSlug } from "../helpers/CreateQuizHelpers";
 import axios from 'axios';
 import { useRouter } from 'next/router'
+import { Translate } from "../lang/StaticTexts";
 
 export default function QuestionsContainer() {
   const router = useRouter();
@@ -35,7 +36,7 @@ export default function QuestionsContainer() {
       }
 
       <div className="col-12 pb-5">
-        <ButtonStyled onClick={handleSubmitQuestions} className="btn btn-danger btn-block">Create Your Quiz</ButtonStyled>
+        <ButtonStyled onClick={handleSubmitQuestions} className="btn btn-danger btn-block">{Translate["Create Your Quiz"][selectedLang]}</ButtonStyled>
       </div>
     </>
   )

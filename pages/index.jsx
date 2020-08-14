@@ -7,6 +7,7 @@ import { useContext, useEffect } from 'react'
 import CreateQuizContext from '../context/CreateQuizContext'
 import { setQuestions } from '../context/CreateQuizActions'
 import QuestionsContainer from '../components/QuestionsContainer'
+import { Translate } from '../lang/StaticTexts'
 
 const steps = [
   "Let's create your quiz!",
@@ -15,7 +16,8 @@ const steps = [
 ]
 export default function Home({ quiz }) {
   const [quizState, dispatch] = useContext(CreateQuizContext);
-
+  console.log(quizState)
+  const { selectedLang } = quizState
   useEffect(() => {
     dispatch(setQuestions(quiz.QuizQuestion))
   }, [])
@@ -24,7 +26,7 @@ export default function Home({ quiz }) {
       case 1:
         return (
           <>
-            <Steps steps={steps} />
+            <Steps steps={steps} lang={selectedLang} />
             <StartForm />
           </>
         )
@@ -46,7 +48,7 @@ export default function Home({ quiz }) {
               alt="Logo"
               className="img-fluid mx-auto d-block" />
             <TitleStyled variants={SlideFromRightToLeft} initial="initial" animate="animate">
-              How well do your friends know you ?
+              {Translate['How well do your friends know you ?'][selectedLang]}
             </TitleStyled>
             {returnSteppedComponent()}
           </div>

@@ -4,9 +4,10 @@ import { useContext } from "react";
 import Answer from "./Answer";
 import CreateQuizContext from "../context/CreateQuizContext";
 import { questionChanged, addAnswerToQuestions } from "../context/CreateQuizActions";
+import { Translate } from "../lang/StaticTexts";
 
 export default function QuestionForm({ question }) {
-  const [_, dispatch] = useContext(CreateQuizContext)
+  const [{ selectedLang }, dispatch] = useContext(CreateQuizContext)
 
   const handleQuestionChange = (event) => {
     dispatch(questionChanged(event.target.value, question.id))
@@ -22,7 +23,7 @@ export default function QuestionForm({ question }) {
         <div className="col-12 mb-4">
           <TextAreaStyled className="form-control"
             onChange={handleQuestionChange}
-            value={question.en} />
+            value={question[selectedLang]} />
         </div>
         {
           question.QuizAnswer.map(answer => (
@@ -32,7 +33,7 @@ export default function QuestionForm({ question }) {
           ))
         }
         <div className="col-12">
-          <ButtonStyled onClick={handleAddNewAnswer} className="btn btn-primary btn-block">Add New Answer</ButtonStyled>
+          <ButtonStyled onClick={handleAddNewAnswer} className="btn btn-primary btn-block">{Translate["Add New Answer"][selectedLang]}</ButtonStyled>
         </div>
       </div>
     </CardStyled>

@@ -5,7 +5,7 @@ import CreateQuizContext from "../context/CreateQuizContext";
 import { answerChanged, selectCorrectAnswer, removeAnswer } from "../context/CreateQuizActions";
 
 export default function Answer({ answer, questionId }) {
-  const [_, dispatch] = useContext(CreateQuizContext);
+  const [{ selectedLang }, dispatch] = useContext(CreateQuizContext);
 
   const handleAnswerChanged = (event) => {
     dispatch(answerChanged(event.target.value, questionId, answer.id));
@@ -26,7 +26,7 @@ export default function Answer({ answer, questionId }) {
       </Switch>
       <TextAreaStyled className="form-control"
         onChange={handleAnswerChanged}
-        value={answer.en} />
+        value={answer[selectedLang]} />
       <DeleteButton className="btn btn-danger" onClick={handleRemoveAnswer}>
         <i className="fas fa-ban"></i>
       </DeleteButton>

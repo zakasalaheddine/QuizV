@@ -3,6 +3,7 @@ import { SlideFromRightToLeft } from "./FramerMotionAnnimations";
 import { useContext } from "react";
 import CreateQuizContext from "../context/CreateQuizContext";
 import { changeUsername, changeSelectedLang, changeSteps, updateQuestionsWithUsername } from "../context/CreateQuizActions";
+import { Translate } from "../lang/StaticTexts";
 
 const Languages = [
   {
@@ -26,18 +27,13 @@ const Languages = [
     name: "Italiano"
   },
   {
-    code: "po",
+    code: "pt",
     name: "Português"
-  },
-  {
-    code: "no",
-    name: "Norsk"
   },
 ]
 
 export default function StartForm() {
-  const [quizState, dispatch] = useContext(CreateQuizContext);
-  const { username, selectedLang, step } = quizState;
+  const [{ username, selectedLang, step }, dispatch] = useContext(CreateQuizContext);
   const handleChangeUsername = (event) => {
     dispatch(changeUsername(event.target.value))
   }
@@ -56,7 +52,7 @@ export default function StartForm() {
     <CardStyled className="card" small={true}>
       <div className="card-body">
         <div className="mb-3">
-          <LabelStyled htmlFor="language">Select your language</LabelStyled>
+          <LabelStyled htmlFor="language">{Translate["Select your language"][selectedLang]}</LabelStyled>
           <SelectStyled variants={SlideFromRightToLeft} initial="initial" animate="animate"
             className="custom-select" id="language" required value={selectedLang} onChange={handleChangeSelectedLang}>
             {
@@ -68,11 +64,11 @@ export default function StartForm() {
         </div>
 
         <div className="mb-3">
-          <LabelStyled htmlFor="username">what is your name</LabelStyled>
+          <LabelStyled htmlFor="username">{Translate["what is your name"][selectedLang]}</LabelStyled>
           <InputTextStyled type="text" className="form-control" id="username"
             placeholder="John..." value={username} onChange={handleChangeUsername} />
         </div>
-        <ButtonStyled onClick={handleNextClick} className="btn btn-primary btn-block">Next</ButtonStyled>
+        <ButtonStyled onClick={handleNextClick} className="btn btn-primary btn-block">{Translate["Next"][selectedLang]}</ButtonStyled>
       </div>
     </CardStyled>
   )

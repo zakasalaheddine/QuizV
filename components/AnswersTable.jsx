@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
+import { Translate } from "../lang/StaticTexts";
 
-export default function AnswersTable({ answers }) {
+export default function AnswersTable({ answers, lang }) {
   const [quizAnswers, setQuizAnswers] = useState(answers)
   useEffect(() => {
     const sortedAnswers = answers.sort((a, b) => {
@@ -17,8 +18,8 @@ export default function AnswersTable({ answers }) {
           <table className="table table-bordered">
             <thead>
               <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Score</th>
+                <th scope="col">{Translate["Name"][lang]}</th>
+                <th scope="col">{Translate["Score"][lang]}</th>
               </tr>
             </thead>
             <tbody>

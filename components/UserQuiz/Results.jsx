@@ -2,26 +2,43 @@ import AnswerQuizContext from "../../context/AnswerQuizContext"
 import { useContext, useEffect, useState } from "react"
 import { CardStyled, TitleStyled, ButtonStyled, LinkAsBuuton } from "../StyledTags"
 import { useRouter } from "next/router"
+import { Translate } from "../../lang/StaticTexts"
+import Link from 'next/link'
 
 export default function Results() {
-  const [answerData, setAnswerData] = useState({ answers: [], score: 0, })
+  const [answerData, setAnswerData] = useState({ answers: [], score: 0, lang: "en" })
   const [{ creatorName }, dispatchAnswer] = useContext(AnswerQuizContext)
   const router = useRouter()
   useEffect(() => {
     const localAnswer = localStorage.getItem(router.asPath.replace('/', ''))
-    const { answers, score } = JSON.parse(localAnswer)
-    setAnswerData({ answers, score })
+    const { answers, score, lang } = JSON.parse(localAnswer)
+    setAnswerData({ answers, score, lang })
     console.log(JSON.parse(localAnswer))
   }, [])
+
+  const getResultTitleBaseOnPercent = () => {
+    if (answerData.answers.length > 0) {
+      const valuePercent = answerData.score / answerData.answers.length;
+      if (valuePercent <= 25) return Translate["Such a bad friend"][answerData.lang]
+      if (valuePercent < 50) return Translate["Not that bad"][answerData.lang]
+      if (valuePercent <= 75) return Translate["Such a good friend"][answerData.lang]
+      if (valuePercent <= 100) return Translate["You are the best"][answerData.lang]
+      return Translate["Such a bad friend"][answerData.lang]
+    }
+
+  }
   return (
     <div>
-      <TitleStyled>Prove how well you know</TitleStyled>
-      <TitleStyled>{creatorName}</TitleStyled>
+      <TitleStyled>{getResultTitleBaseOnPercent()}</TitleStyled>
       <CardStyled>
-        <TitleStyled className="py-2">{`You scored ${answerData.score}/${answerData.answers.length}`}</TitleStyled>
+        <TitleStyled className="py-2">{`${Translate["You have got"][answerData.lang]} ${answerData.score}/${answerData.answers.length}`}</TitleStyled>
       </CardStyled>
       <hr />
-      <LinkAsBuuton href="/" backColor="#079992" className="btn btn-block btn-success">Create your own QUIZ</LinkAsBuuton>
+      <Link href="/">
+        <LinkAsBuuton backColor="#079992" className="btn btn-block btn-success">
+          {Translate["Create your own QUIZ"][answerData.lang]}
+      </LinkAsBuuton>
+      </Link>
     </div>
   )
 }

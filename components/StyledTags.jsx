@@ -200,7 +200,7 @@ border-radius: 20px;
 border-color: ${ props => props.backColor};
 color: #FFFFFF;
 box-shadow: 0 2px 3px rgba(10, 10, 10, .1), 0 0 0 1px rgba(10, 10, 10, .1);
-  &:hover{
+&:hover, &:disabled, &:visited, &:not([href]):not([tabindex]), &:not([href]):not([tabindex]):hover{
   color: #FFFFFF;
   background-color: ${ props => props.backColor};
   border-color: ${ props => props.backColor};
