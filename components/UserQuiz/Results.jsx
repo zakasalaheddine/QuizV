@@ -1,8 +1,8 @@
-import AnswerQuizContext from "../../context/AnswerQuizContext"
+import AnswerQuizContext from "context/AnswerQuizContext"
 import { useContext, useEffect, useState } from "react"
 import { CardStyled, TitleStyled, ButtonStyled, LinkAsBuuton } from "../StyledTags"
 import { useRouter } from "next/router"
-import { Translate } from "../../lang/StaticTexts"
+import { Translate } from "lang/StaticTexts"
 import Link from 'next/link'
 
 export default function Results() {

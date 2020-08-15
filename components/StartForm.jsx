@@ -1,9 +1,9 @@
 import { LabelStyled, CardStyled, SelectStyled, InputTextStyled, ButtonStyled } from "./StyledTags";
 import { SlideFromRightToLeft } from "./FramerMotionAnnimations";
 import { useContext } from "react";
-import CreateQuizContext from "../context/CreateQuizContext";
-import { changeUsername, changeSelectedLang, changeSteps, updateQuestionsWithUsername } from "../context/CreateQuizActions";
-import { Translate } from "../lang/StaticTexts";
+import CreateQuizContext from "context/CreateQuizContext";
+import { changeUsername, changeSelectedLang, changeSteps, updateQuestionsWithUsername } from "context/CreateQuizActions";
+import { Translate } from "lang/StaticTexts";
 
 const Languages = [
   {

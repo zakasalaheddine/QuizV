@@ -1,8 +1,8 @@
 import { CardStyled, LabelStyled, InputTextStyled, ButtonStyled } from "../StyledTags";
 import { useContext } from "react";
-import AnswerQuizContext from "../../context/AnswerQuizContext";
-import { changeResponderUserName, startQuiz } from "../../context/AnswerQuizActions";
-import { Translate } from "../../lang/StaticTexts";
+import AnswerQuizContext from "context/AnswerQuizContext";
+import { changeResponderUserName, startQuiz } from "context/AnswerQuizActions";
+import { Translate } from "lang/StaticTexts";
 
 export default function UserAnswerForm() {
 

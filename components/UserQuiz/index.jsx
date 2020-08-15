@@ -1,6 +1,5 @@
 import UserAnswerForm from "./UserAnswerForm";
-import { TitleStyled } from "../StyledTags";
-import AnswerQuizContext from "../../context/AnswerQuizContext";
+import AnswerQuizContext from "context/AnswerQuizContext";
 import { useContext } from "react";
 import QuizzesContainer from "./QuizzesContainer";
 import Results from "./Results";

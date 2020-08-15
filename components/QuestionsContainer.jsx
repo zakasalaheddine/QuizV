@@ -5,7 +5,7 @@ import { ButtonStyled } from "./StyledTags";
 import { validateQuestionsHasSelectedAnswers, generateRandomSlug } from "../helpers/CreateQuizHelpers";
 import axios from 'axios';
 import { useRouter } from 'next/router'
-import { Translate } from "../lang/StaticTexts";
+import { Translate } from "lang/StaticTexts";
 import { motion } from "framer-motion";
 
 const container = {

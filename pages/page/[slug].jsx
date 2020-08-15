@@ -1,5 +1,5 @@
-import { ImageLogo, CardStyled } from "../../components/StyledTags";
-import { FadeInAnnimation } from "../../components/FramerMotionAnnimations";
+import { ImageLogo, CardStyled } from "components/StyledTags";
+import { FadeInAnnimation } from "components/FramerMotionAnnimations";
 import Axios from 'axios'
 
 export default function Page({ page: { title, content } }) {

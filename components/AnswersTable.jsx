@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Translate } from "../lang/StaticTexts";
+import { Translate } from "lang/StaticTexts";
 import { motion } from "framer-motion";
 
 export default function AnswersTable({ answers, lang, animation }) {

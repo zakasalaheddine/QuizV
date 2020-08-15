@@ -1,7 +1,7 @@
 import { CardStyled, ButtonStyled } from "../StyledTags";
 import { useContext } from "react";
-import AnswerQuizContext from "../../context/AnswerQuizContext";
-import { selectAnswerToQuiz } from "../../context/AnswerQuizActions";
+import AnswerQuizContext from "context/AnswerQuizContext";
+import { selectAnswerToQuiz } from "context/AnswerQuizActions";
 import ResultModal from "./ResultModal";
 
 export default function QuizzesContainer() {

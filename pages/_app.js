@@ -20,8 +20,17 @@ const MyApp = ({ Component, pageProps, router }) => {
     <ThemeProvider theme={defaultTheme}>
       <AnswerQuizContext.Provider value={[answerState, dispatchAnswer]}>
         <CreateQuizContext.Provider value={[quizState, dispatch]}>
-          <Component {...pageProps} key={router.asPath} />
-          <GlobalStyles />
+          <div className="container">
+            <main>
+              <div className="row">
+                <div className="col-md-2"></div>
+                <Component {...pageProps} key={router.asPath} />
+                <GlobalStyles />
+                <div className="col-md-2"></div>
+              </div>
+            </main>
+            <footer></footer>
+          </div>
         </CreateQuizContext.Provider>
       </AnswerQuizContext.Provider>
     </ThemeProvider>

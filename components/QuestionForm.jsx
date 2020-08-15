@@ -2,9 +2,9 @@ import { CardStyled, TextAreaStyled, ButtonStyled } from "./StyledTags";
 import { motion } from 'framer-motion'
 import { useContext } from "react";
 import Answer from "./Answer";
-import CreateQuizContext from "../context/CreateQuizContext";
-import { questionChanged, addAnswerToQuestions } from "../context/CreateQuizActions";
-import { Translate } from "../lang/StaticTexts";
+import CreateQuizContext from "context/CreateQuizContext";
+import { questionChanged, addAnswerToQuestions } from "context/CreateQuizActions";
+import { Translate } from "lang/StaticTexts";
 
 export default function QuestionForm({ question, animation }) {
   const [{ selectedLang }, dispatch] = useContext(CreateQuizContext)

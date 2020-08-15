@@ -1,8 +1,8 @@
 import { Switch, TextAreaStyled, DeleteButton } from "./StyledTags";
 import { motion } from "framer-motion";
 import { useContext } from "react";
-import CreateQuizContext from "../context/CreateQuizContext";
-import { answerChanged, selectCorrectAnswer, removeAnswer } from "../context/CreateQuizActions";
+import CreateQuizContext from "context/CreateQuizContext";
+import { answerChanged, selectCorrectAnswer, removeAnswer } from "context/CreateQuizActions";
 
 export default function Answer({ answer, questionId }) {
   const [{ selectedLang }, dispatch] = useContext(CreateQuizContext);

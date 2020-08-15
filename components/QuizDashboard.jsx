@@ -5,7 +5,7 @@ import { PLATFORMS, getSocialMediaUrl } from "../helpers/ShareQuizHelpers";
 import AnswersTable from "./AnswersTable";
 import Axios from "axios";
 import { useRouter } from "next/router";
-import { Translate } from "../lang/StaticTexts";
+import { Translate } from "lang/StaticTexts";
 import { motion } from "framer-motion";
 
 const steps = [
@@ -27,8 +27,9 @@ const item = {
   show: { opacity: 1 }
 }
 export default function QuizDashboard({ quizData }) {
-  const router = useRouter();
-  const url = "https://google.com"
+  const { query: { quiz } } = useRouter();
+  const url = `${process.env.NEXT_PUBLIC_APP_URL}/${quiz}`
+  console.log(url)
 
   const handleDeleteQuiz = async () => {
     await Axios.delete(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/user-quizzes/${quizData.id}/deleteAnswer`);
@@ -57,7 +58,7 @@ export default function QuizDashboard({ quizData }) {
           href={getSocialMediaUrl(PLATFORMS.WHATSAPP, `How Well do you know me ? ${url}`)}>
           <i className="fab fa-whatsapp"></i> {Translate["Share Quiz on"][quizData.lang]} Whatsapp
         </LinkAsBuuton>
-        <LinkAsBuuton 
+        <LinkAsBuuton
           variants={item}
           backColor="#1da1f2" className="btn btn-block py-2"
           target="_blank"

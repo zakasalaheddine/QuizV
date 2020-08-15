@@ -1,13 +1,13 @@
 import { useEffect, useState, useContext } from "react"
 import { useRouter } from "next/router";
-import QuizDashboard from "../components/QuizDashboard";
-import { ImageLogo } from "../components/StyledTags";
-import { FadeInAnnimation } from "../components/FramerMotionAnnimations";
-import UserQuiz from "../components/UserQuiz";
+import QuizDashboard from "components/QuizDashboard";
+import { ImageLogo } from "components/StyledTags";
+import { FadeInAnnimation } from "components/FramerMotionAnnimations";
+import UserQuiz from "components/UserQuiz";
 import Axios from "axios";
-import AnswerQuizContext from "../context/AnswerQuizContext";
-import { setDataToAnswer } from "../context/AnswerQuizActions";
-import Results from "../components/UserQuiz/Results";
+import AnswerQuizContext from "context/AnswerQuizContext";
+import { setDataToAnswer } from "context/AnswerQuizActions";
+import Results from "components/UserQuiz/Results";
 
 export default function QuizPage({ slug, data }) {
   const router = useRouter();

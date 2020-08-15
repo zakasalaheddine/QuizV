@@ -1,10 +1,10 @@
 import { ModalContainer, ResultContainer, TitleStyled, ButtonStyled, NextButton } from "../StyledTags";
 import { AnimatePresence } from "framer-motion";
 import { useContext } from "react";
-import AnswerQuizContext from "../../context/AnswerQuizContext";
-import { nextQuestion } from "../../context/AnswerQuizActions";
+import AnswerQuizContext from "context/AnswerQuizContext";
+import { nextQuestion } from "context/AnswerQuizActions";
 import Axios from "axios";
-import { Translate } from "../../lang/StaticTexts";
+import { Translate } from "lang/StaticTexts";
 
 export default function ResultModal({ isOn }) {
   const [answerState, dispatchAnswer] = useContext(AnswerQuizContext)
