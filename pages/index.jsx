@@ -16,7 +16,6 @@ const steps = [
 ]
 export default function Home({ quiz }) {
   const [quizState, dispatch] = useContext(CreateQuizContext);
-  console.log(quizState)
   const { selectedLang } = quizState
   useEffect(() => {
     dispatch(setQuestions(quiz.QuizQuestion))
@@ -63,7 +62,7 @@ export default function Home({ quiz }) {
 }
 
 export async function getServerSideProps(context) {
-  const quiz = await axios.get('http://localhost:1337/quizzes/1');
+  const quiz = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/quizzes/1`);
   return {
     props: {
       quiz: quiz.data
