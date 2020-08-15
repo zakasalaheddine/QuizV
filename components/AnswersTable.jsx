@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
 import { Translate } from "../lang/StaticTexts";
+import { motion } from "framer-motion";
 
-export default function AnswersTable({ answers, lang }) {
+export default function AnswersTable({ answers, lang, animation }) {
   const [quizAnswers, setQuizAnswers] = useState(answers)
   useEffect(() => {
     const sortedAnswers = answers.sort((a, b) => {
@@ -12,7 +13,7 @@ export default function AnswersTable({ answers, lang }) {
     setQuizAnswers(sortedAnswers)
   }, [answers])
   return (
-    <div className="answers-table">
+    <motion.div className="answers-table" variants={animation}>
       {
         quizAnswers && (
           <table className="table table-bordered">
@@ -36,6 +37,6 @@ export default function AnswersTable({ answers, lang }) {
         )
       }
 
-    </div>
+    </motion.div>
   )
 }

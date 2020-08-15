@@ -17,7 +17,17 @@ export default function UserAnswerForm() {
   }
 
   return (
-    <CardStyled className="card" small={true}>
+    <CardStyled variants={{
+      initial: {
+        opacity: 0,
+        scale: 2,
+      },
+      animate: {
+        opacity: 1,
+        scale: 1,
+      }
+    }}
+      initial="initial" animate="animate" className="card" small={true}>
 
       <div className="card-body">
         <div className="mb-3">

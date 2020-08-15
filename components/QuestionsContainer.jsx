@@ -6,7 +6,21 @@ import { validateQuestionsHasSelectedAnswers, generateRandomSlug } from "../help
 import axios from 'axios';
 import { useRouter } from 'next/router'
 import { Translate } from "../lang/StaticTexts";
+import { motion } from "framer-motion";
 
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.3
+    }
+  }
+}
+const item = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1 }
+}
 export default function QuestionsContainer() {
   const router = useRouter();
   const [quizState] = useContext(CreateQuizContext);
@@ -28,16 +42,16 @@ export default function QuestionsContainer() {
     console.log(false);
   }
   return (
-    <>
+    <motion.div variants={container} initial="hidden" animate="show">
       {
         questions.map(question => (
-          <QuestionForm key={question.id} question={question} />
+          <QuestionForm key={question.id} question={question} animation={item} />
         ))
       }
 
       <div className="col-12 pb-5">
         <ButtonStyled onClick={handleSubmitQuestions} className="btn btn-danger btn-block">{Translate["Create Your Quiz"][selectedLang]}</ButtonStyled>
       </div>
-    </>
+    </motion.div>
   )
 }

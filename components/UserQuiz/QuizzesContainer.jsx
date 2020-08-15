@@ -12,25 +12,35 @@ export default function QuizzesContainer() {
   }
   return (
     <>
-    <div className="quizzes-container">
-      <CardStyled>
-        <div className="card-header"><h3>{currentQuestion[lang]}</h3></div>
-        <div className="card-body">
-          {
-            currentQuestion.QuizAnswer.map(answer => (
-              <ButtonStyled
-                disabled={currentQuestion.isAnswered}
-                isCorrect={answer.isCorrect}
-                onClick={() => { handleAnswerClick(answer) }}
-                className={`btn btn-block ${answer.isClicked ? 'clicked' : ''}`}>
-                {answer[lang]}
-              </ButtonStyled>
-            ))
+      <div className="quizzes-container">
+        <CardStyled variants={{
+          initial: {
+            opacity: 0,
+            scale: 2,
+          },
+          animate: {
+            opacity: 1,
+            scale: 1,
           }
-        </div>
-      </CardStyled>
-    </div>
-    <ResultModal isOn={currentQuestion.isAnswered} />
+        }}
+          initial="initial" animate="animate">
+          <div className="card-header"><h3>{currentQuestion[lang]}</h3></div>
+          <div className="card-body">
+            {
+              currentQuestion.QuizAnswer.map(answer => (
+                <ButtonStyled
+                  disabled={currentQuestion.isAnswered}
+                  isCorrect={answer.isCorrect}
+                  onClick={() => { handleAnswerClick(answer) }}
+                  className={`btn btn-block ${answer.isClicked ? 'clicked' : ''}`}>
+                  {answer[lang]}
+                </ButtonStyled>
+              ))
+            }
+          </div>
+        </CardStyled>
+      </div>
+      <ResultModal isOn={currentQuestion.isAnswered} />
     </>
   )
 }

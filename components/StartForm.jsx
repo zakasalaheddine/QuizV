@@ -32,6 +32,8 @@ const Languages = [
   },
 ]
 
+
+
 export default function StartForm() {
   const [{ username, selectedLang, step }, dispatch] = useContext(CreateQuizContext);
   const handleChangeUsername = (event) => {
@@ -45,15 +47,29 @@ export default function StartForm() {
       dispatch(updateQuestionsWithUsername())
       dispatch(changeSteps(2));
     }
-    console.log(step);
   }
 
   return (
-    <CardStyled className="card" small={true}>
+    <CardStyled className="card" small={true}
+      variants={{
+        initial: {
+          opacity: 0,
+          scale: 2,
+        },
+        animate: {
+          opacity: 1,
+          scale: 1,
+          transition: {
+            delay: 1.5,
+            staggerChildren: 0.3
+          }
+        }
+      }}
+      initial="initial" animate="animate">
       <div className="card-body">
         <div className="mb-3">
           <LabelStyled htmlFor="language">{Translate["Select your language"][selectedLang]}</LabelStyled>
-          <SelectStyled variants={SlideFromRightToLeft} initial="initial" animate="animate"
+          <SelectStyled 
             className="custom-select" id="language" required value={selectedLang} onChange={handleChangeSelectedLang}>
             {
               Languages.map(lang => (

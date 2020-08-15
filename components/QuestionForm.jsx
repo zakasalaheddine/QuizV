@@ -6,7 +6,7 @@ import CreateQuizContext from "../context/CreateQuizContext";
 import { questionChanged, addAnswerToQuestions } from "../context/CreateQuizActions";
 import { Translate } from "../lang/StaticTexts";
 
-export default function QuestionForm({ question }) {
+export default function QuestionForm({ question, animation }) {
   const [{ selectedLang }, dispatch] = useContext(CreateQuizContext)
 
   const handleQuestionChange = (event) => {
@@ -18,7 +18,7 @@ export default function QuestionForm({ question }) {
   }
 
   return (
-    <CardStyled>
+    <CardStyled variants={animation}>
       <div className="card-body row">
         <div className="col-12 mb-4">
           <TextAreaStyled className="form-control"

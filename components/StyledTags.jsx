@@ -82,7 +82,7 @@ export const LabelStyled = styled.label`
   font-size: 1.3rem;
 `
 
-export const CardStyled = styled.div`
+export const CardStyled = styled(motion.div)`
   @media (min-width: 992px) {
     width: ${props => props.small ? '60%' : '100%'};
   }
@@ -123,7 +123,7 @@ export const InputTextStyled = styled.input`
   box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
 `
 
-export const ButtonStyled = styled.button`
+export const ButtonStyled = styled(motion.button)`
   font-weight: bold;
   font-size: 1.2rem;
   outline: none;
@@ -191,7 +191,7 @@ i{
 }
 `
 
-export const LinkAsBuuton = styled.a`
+export const LinkAsBuuton = styled(motion.a)`
 background-color: ${ props => props.backColor};
 font-weight: bold;
 font-size: 1.2rem;
