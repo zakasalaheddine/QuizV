@@ -23,15 +23,15 @@ const item = {
   show: { opacity: 1 }
 }
 const firstSteps = [
-  'Open Instagram',
-  'Go to the Profile tab',
-  'Tap the "Edit Profile" button'
+  'Open Whatsapp',
+  'Go to the Status tab',
+  'Tap the floating Pencil icon at the bottom'
 ]
 const secondSteps = [
-  'Paste your Quiz link into website box',
-  'Save changes and you are done',
+  'Type your invitation and paste your Quiz link',
+  'Tap Send button',
 ]
-export default function InstagramPage() {
+export default function WhatsappPage() {
   const [{ selectedLang }] = useContext(CreateQuizContext)
   const router = useRouter();
   return (
@@ -40,19 +40,18 @@ export default function InstagramPage() {
         src="https://webestiefy.com/bestimages/bestiefy.png"
         alt="Logo"
         className="img-fluid mx-auto d-block" />
-      <TitleStyled variants={item}>{Translate["Share Quiz on"][selectedLang]} Instagram's BIO</TitleStyled>
+      <TitleStyled variants={item}>{Translate["Share Quiz on"][selectedLang]} Whatsapp Status</TitleStyled>
       <ul>
         {firstSteps.map((step, idx) => (<motion.li key={idx} variants={item}>{Translate[step][selectedLang]}</motion.li>))}
       </ul>
-      <motion.img variants={item} className="img-fluid mb-3 shadow-sm" src="/assets/insta 2.png" alt="Instruction for insta Bio 1" />
-      <br />
-      <motion.img variants={item} className="img-fluid mb-3 shadow-sm" src="/assets/insta 1.png" alt="Instruction for insta Bio 1" />
+      <motion.img variants={item} className="img-fluid mb-3 shadow-sm" src="/assets/whatsapp 1.png" alt="Instruction for insta Bio 1" />
       <ul>
         {secondSteps.map((step, idx) => (<motion.li key={idx} variants={item}>{Translate[step][selectedLang]}</motion.li>))}
       </ul>
+      <motion.img variants={item} className="img-fluid mb-3 shadow-sm" src="/assets/whatsapp 2.png" alt="Instruction for insta Bio 1" />
       <ButtonStyled
         onClick={() => { router.back() }}
-        variants={item} className="btn btn-dark btn-block py-2">
+        variants={item} className="btn btn-dark btn-block py-2 mb-3">
         {Translate["GO BACK"][selectedLang]}
       </ButtonStyled>
     </motion.div>

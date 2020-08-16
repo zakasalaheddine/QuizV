@@ -8,6 +8,8 @@ import Axios from "axios";
 import AnswerQuizContext from "context/AnswerQuizContext";
 import { setDataToAnswer } from "context/AnswerQuizActions";
 import Results from "components/UserQuiz/Results";
+import CreateQuizContext from "context/CreateQuizContext";
+import { changeSelectedLang } from "context/CreateQuizActions";
 
 export default function QuizPage({ slug, data }) {
   const router = useRouter();
@@ -15,6 +17,7 @@ export default function QuizPage({ slug, data }) {
   const [quizIsMine, setQuizIsMine] = useState(false)
   const [alreadyAnswerd, setAlreadyAnswerd] = useState(false)
   const [answerState, dispatchAnswer] = useContext(AnswerQuizContext)
+  const [_, dispatch] = useContext(CreateQuizContext)
   useEffect(() => {
     if (!data) {
       router.push("/")
@@ -23,6 +26,7 @@ export default function QuizPage({ slug, data }) {
     const localSlug = localStorage.getItem("QUIZV_SLUG")
     if (localSlug && localSlug === slug) {
       setQuizIsMine(true)
+      dispatch(changeSelectedLang(data.lang))
     } else {
       const AnswersData = localStorage.getItem(slug)
       if (AnswersData) {

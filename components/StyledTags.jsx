@@ -192,6 +192,7 @@ i{
 `
 
 export const LinkAsBuuton = styled(motion.a)`
+cursor: pointer;
 background-color: ${ props => props.backColor};
 font-weight: bold;
 font-size: 1.2rem;

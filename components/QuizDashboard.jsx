@@ -7,6 +7,7 @@ import Axios from "axios";
 import { useRouter } from "next/router";
 import { Translate } from "lang/StaticTexts";
 import { motion } from "framer-motion";
+import Link from 'next/link'
 
 const steps = [
   "Now simply share your quiz link with all your friends",
@@ -29,7 +30,6 @@ const item = {
 export default function QuizDashboard({ quizData }) {
   const { query: { quiz } } = useRouter();
   const url = `${process.env.NEXT_PUBLIC_APP_URL}/${quiz}`
-  console.log(url)
 
   const handleDeleteQuiz = async () => {
     await Axios.delete(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/user-quizzes/${quizData.id}/deleteAnswer`);
@@ -65,6 +65,27 @@ export default function QuizDashboard({ quizData }) {
           href={getSocialMediaUrl(PLATFORMS.TWIITER, `How Well do you know me ? ${url}`)}>
           <i className="fab fa-twitter"></i> {Translate["Share Quiz on"][quizData.lang]} Twitter
         </LinkAsBuuton>
+        <Link href="/[quiz]/instagram" as={`/${quiz}/instagram`}>
+          <LinkAsBuuton
+            variants={item}
+            backColor="#e4405f" className="btn btn-block py-2">
+            <i className="fab fa-instagram"></i> {Translate["Share Quiz on"][quizData.lang]} Instagram's Bio
+        </LinkAsBuuton>
+        </Link>
+        <Link href="/[quiz]/whatsapp" as={`/${quiz}/whatsapp`}>
+          <LinkAsBuuton
+            variants={item}
+            backColor="#1cb06d" className="btn btn-block py-2">
+            <i className="fab fa-whatsapp"></i> {Translate["Share Quiz on"][quizData.lang]} Whatsapp Status
+        </LinkAsBuuton>
+        </Link>
+        <Link href="/[quiz]/snapchat" as={`/${quiz}/snapchat`}>
+          <LinkAsBuuton
+            variants={item}
+            backColor="#fffc00" className="btn btn-block py-2 text-dark">
+            <i className="fab fa-snapchat"></i> {Translate["Share Quiz on"][quizData.lang]} Snapchat
+        </LinkAsBuuton>
+        </Link>
       </div>
 
       <ButtonStyled variants={item} className="btn btn-block btn-danger" onClick={handleDeleteQuiz}>
