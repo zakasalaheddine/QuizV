@@ -29,6 +29,7 @@ export default function QuizzesContainer() {
             {
               currentQuestion.QuizAnswer.map(answer => (
                 <ButtonStyled
+                  key={answer.id}
                   disabled={currentQuestion.isAnswered}
                   isCorrect={answer.isCorrect}
                   onClick={() => { handleAnswerClick(answer) }}

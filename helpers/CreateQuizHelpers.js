@@ -21,5 +21,5 @@ export const validateQuestionsHasSelectedAnswers = (questions) => {
 };
 
 export const generateRandomSlug = () => {
-  return Math.random().toString(36).slice(2);
+  return Math.random().toString(36).slice(7);
 }

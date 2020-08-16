@@ -1,10 +1,13 @@
 import { ModalContainer, ResultContainer, TitleStyled, ButtonStyled, NextButton } from "../StyledTags";
 import { AnimatePresence } from "framer-motion";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import AnswerQuizContext from "context/AnswerQuizContext";
 import { nextQuestion } from "context/AnswerQuizActions";
 import Axios from "axios";
 import { Translate } from "lang/StaticTexts";
+import useSound from 'use-sound';
+import LostSound from 'sounds/lost.mp3'
+import WinSound from 'sounds/win.mp3'
 
 export default function ResultModal({ isOn }) {
   const [answerState, dispatchAnswer] = useContext(AnswerQuizContext)
@@ -25,6 +28,21 @@ export default function ResultModal({ isOn }) {
     const result = await Axios.put(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/user-quizzes/${quizId}/answer`, data)
     localStorage.setItem(result.data.slug, JSON.stringify({ ...data, creatorName: result.data.username }))
   }
+  const [playLost] = useSound(LostSound, { volume: 0.50 });
+  const [playWin] = useSound(WinSound, { volume: 0.50 });
+  useEffect(() => {
+
+    if (isCorrect !== undefined && isCorrect !== null) {
+      if (isCorrect) {
+        console.log("Should Play")
+        playWin();
+      } else {
+        
+        console.log("Should Play 2")
+        playLost()
+      }
+    }
+  }, [isCorrect])
   return (
     <AnimatePresence>
       {

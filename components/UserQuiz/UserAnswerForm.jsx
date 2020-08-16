@@ -7,7 +7,6 @@ import { Translate } from "lang/StaticTexts";
 export default function UserAnswerForm() {
 
   const [answerState, dispatchAnswer] = useContext(AnswerQuizContext)
-  console.log({ answerState })
   const handleUsernameChange = (event) => {
     dispatchAnswer(changeResponderUserName(event.target.value))
   }
