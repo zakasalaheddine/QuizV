@@ -8,6 +8,7 @@ import { Translate } from "lang/StaticTexts";
 import useSound from 'use-sound';
 import LostSound from 'sounds/lost.mp3'
 import WinSound from 'sounds/win.mp3'
+import { InResultModal } from "../Ads";
 
 export default function ResultModal({ isOn }) {
   const [answerState, dispatchAnswer] = useContext(AnswerQuizContext)
@@ -51,6 +52,7 @@ export default function ResultModal({ isOn }) {
             <ResultContainer initial={{ y: 300 }} animate={{ y: 0 }} exit={{ y: 200 }}>
               <TitleStyled>RESULT</TitleStyled>
               <TitleStyled>{isCorrect ? Translate["IT'S CORRECT"][answerState.lang] : Translate["IT'S NOT CORRECT"][answerState.lang]}</TitleStyled>
+              <InResultModal />
               <NextButton className={`btn btn-success`} onClick={nextQuestionHandler}>
                 {isEnd ? Translate["SHOW RESULTS"][answerState.lang] : Translate["NEXT QUESTION"][answerState.lang]}
               </NextButton>

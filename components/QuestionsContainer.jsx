@@ -7,6 +7,7 @@ import axios from 'axios';
 import { useRouter } from 'next/router'
 import { Translate } from "lang/StaticTexts";
 import { motion } from "framer-motion";
+import AppOptionContext from "../context/AppOptionsContext";
 
 const container = {
   hidden: { opacity: 0 },
@@ -24,6 +25,7 @@ const item = {
 export default function QuestionsContainer() {
   const router = useRouter();
   const [quizState] = useContext(CreateQuizContext);
+  const appOptions = useContext(AppOptionContext)
   const { questions, username, selectedLang } = quizState;
   const handleSubmitQuestions = async () => {
     if (validateQuestionsHasSelectedAnswers(questions)) {
@@ -48,10 +50,16 @@ export default function QuestionsContainer() {
           <QuestionForm key={question.id} question={question} animation={item} />
         ))
       }
-
+      <div
+        className="d-flex justify-content-center  mb-3"
+        dangerouslySetInnerHTML={{
+          __html: appOptions.underQuestion,
+        }}
+      />
       <div className="col-12 pb-5">
         <ButtonStyled onClick={handleSubmitQuestions} className="btn btn-danger btn-block">{Translate["Create Your Quiz"][selectedLang]}</ButtonStyled>
       </div>
+
     </motion.div>
   )
 }

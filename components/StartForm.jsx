@@ -69,7 +69,7 @@ export default function StartForm() {
       <div className="card-body">
         <div className="mb-3">
           <LabelStyled htmlFor="language">{Translate["Select your language"][selectedLang]}</LabelStyled>
-          <SelectStyled 
+          <SelectStyled
             className="custom-select" id="language" required value={selectedLang} onChange={handleChangeSelectedLang}>
             {
               Languages.map(lang => (

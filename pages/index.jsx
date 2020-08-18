@@ -60,9 +60,7 @@ export default function Home({ quiz }) {
       <TitleStyled variants={item}>
         {Translate['How well do your friends know you ?'][selectedLang]}
       </TitleStyled>
-      <AnimatePresence>
-        {returnSteppedComponent()}
-      </AnimatePresence>
+      {returnSteppedComponent()}
     </motion.div>
   )
 }

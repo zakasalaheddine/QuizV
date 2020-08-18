@@ -3,6 +3,7 @@ import { useContext } from "react";
 import AnswerQuizContext from "context/AnswerQuizContext";
 import { selectAnswerToQuiz } from "context/AnswerQuizActions";
 import ResultModal from "./ResultModal";
+import { UpQuestion } from "../Ads";
 
 export default function QuizzesContainer() {
   const [answerState, dispatchAnswer] = useContext(AnswerQuizContext)
@@ -12,6 +13,7 @@ export default function QuizzesContainer() {
   }
   return (
     <>
+      <UpQuestion />
       <div className="quizzes-container">
         <CardStyled variants={{
           initial: {

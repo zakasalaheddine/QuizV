@@ -4,6 +4,7 @@ import { CardStyled, TitleStyled, ButtonStyled, LinkAsBuuton } from "../StyledTa
 import { useRouter } from "next/router"
 import { Translate } from "lang/StaticTexts"
 import Link from 'next/link'
+import { UnderQuestion } from "../Ads"
 
 export default function Results() {
   const [answerData, setAnswerData] = useState({ answers: [], score: 0, lang: "en" })
@@ -34,10 +35,11 @@ export default function Results() {
         <TitleStyled className="py-2">{`${Translate["You have got"][answerData.lang]} ${answerData.score}/${answerData.answers.length}`}</TitleStyled>
       </CardStyled>
       <hr />
+      <UnderQuestion />
       <Link href="/">
         <LinkAsBuuton backColor="#079992" className="btn btn-block btn-success">
           {Translate["Create your own QUIZ"][answerData.lang]}
-      </LinkAsBuuton>
+        </LinkAsBuuton>
       </Link>
     </div>
   )
