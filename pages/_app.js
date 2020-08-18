@@ -14,6 +14,7 @@ import { DefaultSEO } from "../helpers/DefaultSEO";
 import Axios from "axios";
 import Loader from "../components/Loader";
 import AppOptionContext from "../context/AppOptionsContext";
+import Head from "next/head";
 
 const MyApp = ({ Component, pageProps, router }) => {
   const [quizState, dispatch] = useReducer(CreateQuizReducer, initialState);
@@ -39,9 +40,26 @@ const MyApp = ({ Component, pageProps, router }) => {
             <div className="container">
               {appOptions ? (
                 <main>
+                  <Head>
+                    {appOptions.googleAnalyticsId && (
+                      <>
+                        <script
+                          async
+                          src={`https://www.googletagmanager.com/gtag/js?id=${appOptions.googleAnalyticsId}`}
+                        ></script>
+                        <script>
+                          {` window.dataLayer = window.dataLayer || [];
+                      function gtag(){dataLayer.push(arguments);}
+                      gtag('js', new Date());
+
+                      gtag('config', '${appOptions.googleAnalyticsId}');`}
+                        </script>
+                      </>
+                    )}
+                  </Head>
                   <div className="row">
                     <div className="col-md-2">
-                      <div 
+                      <div
                         className="position-fixed d-none d-sm-none d-md-block"
                         dangerouslySetInnerHTML={{
                           __html: appOptions.adsLeft,
@@ -55,7 +73,7 @@ const MyApp = ({ Component, pageProps, router }) => {
                     />
                     <Component {...pageProps} key={router.asPath} />
                     <div className="col-md-2">
-                    <div
+                      <div
                         className="position-fixed d-none d-sm-none d-md-block"
                         dangerouslySetInnerHTML={{
                           __html: appOptions.rightAds,
