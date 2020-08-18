@@ -72,7 +72,7 @@ export async function getServerSideProps({ params, res }) {
     if (quizData.length === 0 || result.data[0].isDeleted) {
       res.writeHead(302, { Location: '/' });
       res.end();
-      return
+      return { props: {} }
     }
     if (quizData.length > 0) {
       return {

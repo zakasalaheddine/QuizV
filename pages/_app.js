@@ -9,6 +9,8 @@ import AnswerQuizContext from "../context/AnswerQuizContext";
 import { ThemeProvider } from "emotion-theming";
 import { defaultTheme } from "../themes/DefaultTheme";
 import GlobalStyles from "../components/GlobalStyles";
+import { DefaultSeo } from "next-seo";
+import { DefaultSEO } from "../helpers/DefaultSEO";
 
 const MyApp = ({ Component, pageProps, router }) => {
   const [quizState, dispatch] = useReducer(CreateQuizReducer, initialState);
@@ -20,12 +22,13 @@ const MyApp = ({ Component, pageProps, router }) => {
     <ThemeProvider theme={defaultTheme}>
       <AnswerQuizContext.Provider value={[answerState, dispatchAnswer]}>
         <CreateQuizContext.Provider value={[quizState, dispatch]}>
+          <DefaultSeo { ...DefaultSEO  } />
           <div className="container">
             <main>
               <div className="row">
                 <div className="col-md-2"></div>
-                <Component {...pageProps} key={router.asPath} />
                 <GlobalStyles />
+                <Component {...pageProps} key={router.asPath} />
                 <div className="col-md-2"></div>
               </div>
             </main>
