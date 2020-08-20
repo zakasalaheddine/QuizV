@@ -8,6 +8,7 @@ import { useRouter } from "next/router";
 import { Translate } from "lang/StaticTexts";
 import { motion } from "framer-motion";
 import Link from 'next/link'
+import UrlToQuiz from "./UrlToQuiz";
 
 const steps = [
   "Now simply share your quiz link with all your friends",
@@ -40,6 +41,7 @@ export default function QuizDashboard({ quizData }) {
   return (
     <motion.div className="mb-5" variants={container} initial="hidden" animate="show">
       <TitleStyled variants={item}>{Translate["Your quiz is ready"][quizData.lang]}</TitleStyled>
+      <UrlToQuiz url={url} />
       <Steps steps={steps} lang={quizData.lang} animation={item} />
       <AnswersTable answers={quizData.Answers} lang={quizData.lang} animation={item} />
       <div className="buttons my-5">
@@ -87,7 +89,6 @@ export default function QuizDashboard({ quizData }) {
         </LinkAsBuuton>
         </Link>
       </div>
-
       <ButtonStyled variants={item} className="btn btn-block btn-danger" onClick={handleDeleteQuiz}>
         {Translate["Delete my quiz"][quizData.lang]}
       </ButtonStyled>

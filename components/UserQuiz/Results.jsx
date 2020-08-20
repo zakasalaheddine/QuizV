@@ -18,8 +18,10 @@ export default function Results() {
   }, [])
 
   const getResultTitleBaseOnPercent = () => {
+    console.log(answerData.answers.length )
     if (answerData.answers.length > 0) {
-      const valuePercent = answerData.score / answerData.answers.length;
+      const valuePercent = answerData.score / answerData.answers.length * 100;
+      console.log({valuePercent} )
       if (valuePercent <= 25) return Translate["Such a bad friend"][answerData.lang]
       if (valuePercent < 50) return Translate["Not that bad"][answerData.lang]
       if (valuePercent <= 75) return Translate["Such a good friend"][answerData.lang]
