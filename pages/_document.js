@@ -1,6 +1,4 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
-import { ThemeProvider } from "emotion-theming";
-import { defaultTheme } from "../themes/DefaultTheme";
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -12,6 +10,10 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <meta
+            name="google-site-verification"
+            content="Hs8EaDUjy9l_W1JmKdl1pQ0_h7pMI9bhXVJJKE1qvwU"
+          />
           <link
             rel="apple-touch-icon"
             sizes="57x57"
