@@ -1,8 +1,6 @@
 import { useEffect, useState, useContext } from "react"
 import { useRouter } from "next/router";
 import QuizDashboard from "components/QuizDashboard";
-import { ImageLogo } from "components/StyledTags";
-import { FadeInAnnimation } from "components/FramerMotionAnnimations";
 import UserQuiz from "components/UserQuiz";
 import Axios from "axios";
 import AnswerQuizContext from "context/AnswerQuizContext";
@@ -10,6 +8,7 @@ import { setDataToAnswer } from "context/AnswerQuizActions";
 import Results from "components/UserQuiz/Results";
 import CreateQuizContext from "context/CreateQuizContext";
 import { changeSelectedLang } from "context/CreateQuizActions";
+import Logo from "components/Logo";
 
 export default function QuizPage({ slug, data }) {
   const router = useRouter();
@@ -47,10 +46,7 @@ export default function QuizPage({ slug, data }) {
 
   return (
     <div className="col-md-8">
-      <ImageLogo initial="hidden" animate="visible" variants={FadeInAnnimation}
-        src="https://webestiefy.com/bestimages/bestiefy.png"
-        alt="Logo"
-        className="img-fluid mx-auto d-block" />
+      <Logo />
       {renderCorrectComponent()}
     </div>
   )

@@ -10,6 +10,7 @@ import { Translate } from 'lang/StaticTexts'
 import { motion } from 'framer-motion'
 import Loader from 'components/Loader'
 import { useRouter } from 'next/router'
+import Logo from '../components/Logo'
 
 const steps = [
   "Let's create your quiz!",
@@ -63,10 +64,7 @@ export default function Home({ quiz }) {
   }
   return (
     <motion.div className="col-md-8" animate="show" initial="hidden" variants={container}>
-      <ImageLogo variants={item}
-        src="https://webestiefy.com/bestimages/bestiefy.png"
-        alt="Logo"
-        className="img-fluid mx-auto d-block" />
+      <Logo />
       {
         loading ? (
           <Loader />

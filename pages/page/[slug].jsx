@@ -1,8 +1,9 @@
-import { ImageLogo, CardStyled } from "components/StyledTags";
-import { FadeInAnnimation } from "components/FramerMotionAnnimations";
+import { CardStyled } from "components/StyledTags";
+import Logo from "components/Logo";
 import Axios from 'axios'
 import ReactMarkdown from 'react-markdown'
 import { NextSeo } from "next-seo";
+
 
 export default function Page({ page: { title, content } }) {
   const SEO = {
@@ -16,10 +17,7 @@ export default function Page({ page: { title, content } }) {
           <div className="row">
             <div className="col-md-2"></div>
             <div className="col-md-8">
-              <ImageLogo initial="hidden" animate="visible" variants={FadeInAnnimation}
-                src="https://webestiefy.com/bestimages/bestiefy.png"
-                alt="Logo"
-                className="img-fluid mx-auto d-block" />
+              <Logo />
               <CardStyled>
                 <div className="card-header">
                   <h1>{title}</h1>

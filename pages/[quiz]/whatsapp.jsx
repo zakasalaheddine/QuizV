@@ -6,6 +6,7 @@ import { useContext, useEffect } from "react";
 import Link from "next/link";
 import { LinkAsBuuton, ButtonStyled } from "../../components/StyledTags";
 import { useRouter } from "next/router";
+import Logo from "../../components/Logo";
 
 
 const container = {
@@ -36,10 +37,7 @@ export default function WhatsappPage() {
   const router = useRouter();
   return (
     <motion.div className="col-md-8" animate="show" initial="hidden" variants={container} exit="exit">
-      <ImageLogo variants={item}
-        src="https://webestiefy.com/bestimages/bestiefy.png"
-        alt="Logo"
-        className="img-fluid mx-auto d-block" />
+      <Logo />
       <TitleStyled variants={item}>{Translate["Share Quiz on"][selectedLang]} Whatsapp Status</TitleStyled>
       <ul>
         {firstSteps.map((step, idx) => (<motion.li key={idx} variants={item}>{Translate[step][selectedLang]}</motion.li>))}
