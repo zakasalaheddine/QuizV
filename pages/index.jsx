@@ -2,12 +2,14 @@ import axios from 'axios'
 import { TitleStyled, ImageLogo } from 'components/StyledTags'
 import Steps from 'components/Steps'
 import StartForm from 'components/StartForm'
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import CreateQuizContext from 'context/CreateQuizContext'
 import { setQuestions } from 'context/CreateQuizActions'
 import QuestionsContainer from 'components/QuestionsContainer'
 import { Translate } from 'lang/StaticTexts'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
+import Loader from 'components/Loader'
+import { useRouter } from 'next/router'
 
 const steps = [
   "Let's create your quiz!",
@@ -32,8 +34,16 @@ const item = {
 export default function Home({ quiz }) {
   const [quizState, dispatch] = useContext(CreateQuizContext);
   const { selectedLang } = quizState
+  const [loading, setLoading] = useState(true)
+  const router = useRouter()
   useEffect(() => {
-    dispatch(setQuestions(quiz.QuizQuestion))
+    const localQuiz = localStorage.getItem("QUIZV_SLUG")
+    if (localQuiz) {
+      router.push('/[quiz]', `/${localQuiz}`)
+    } else {
+      dispatch(setQuestions(quiz.QuizQuestion))
+      setLoading(false)
+    }
   }, [])
   const returnSteppedComponent = () => {
     switch (quizState.step) {
@@ -57,10 +67,18 @@ export default function Home({ quiz }) {
         src="https://webestiefy.com/bestimages/bestiefy.png"
         alt="Logo"
         className="img-fluid mx-auto d-block" />
-      <TitleStyled variants={item}>
-        {Translate['How well do your friends know you ?'][selectedLang]}
-      </TitleStyled>
-      {returnSteppedComponent()}
+      {
+        loading ? (
+          <Loader />
+        ) : (
+            <>
+              <TitleStyled variants={item}>
+                {Translate['How well do your friends know you ?'][selectedLang]}
+              </TitleStyled>
+              {returnSteppedComponent()}
+            </>
+          )
+      }
     </motion.div>
   )
 }
