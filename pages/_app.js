@@ -34,8 +34,8 @@ const MyApp = ({ Component, pageProps, router }) => {
     loadAppOptions();
   }, []);
   return (
-    <AppOptionContext.Provider value={appOptions}>
-      <ThemeProvider theme={defaultTheme}>
+    <ThemeProvider theme={defaultTheme}>
+      <AppOptionContext.Provider value={appOptions}>
         <AnswerQuizContext.Provider value={[answerState, dispatchAnswer]}>
           <CreateQuizContext.Provider value={[quizState, dispatch]}>
             <div className="container">
@@ -84,16 +84,16 @@ const MyApp = ({ Component, pageProps, router }) => {
                       </div>
                     </div>
                   </main>
-                  <Footer />
                 </>
               ) : (
-                <Loader />
+                <Component {...pageProps} key={router.asPath} />
               )}
+              <Footer />
             </div>
           </CreateQuizContext.Provider>
         </AnswerQuizContext.Provider>
-      </ThemeProvider>
-    </AppOptionContext.Provider>
+      </AppOptionContext.Provider>
+    </ThemeProvider>
   );
 };
 export default MyApp;
