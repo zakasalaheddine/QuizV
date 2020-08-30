@@ -1,23 +1,22 @@
 import axios from 'axios'
-import { TitleStyled, ImageLogo } from 'components/StyledTags'
+import { TitleStyled } from 'components/StyledTags'
 import Steps from 'components/Steps'
 import StartForm from 'components/StartForm'
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect } from 'react'
 import CreateQuizContext from 'context/CreateQuizContext'
 import { setQuestions } from 'context/CreateQuizActions'
 import QuestionsContainer from 'components/QuestionsContainer'
 import { Translate } from 'lang/StaticTexts'
 import { motion } from 'framer-motion'
-import Loader from 'components/Loader'
-import { useRouter } from 'next/router'
 import Logo from '../components/Logo'
+import Cookies from 'cookies'
+import cookieCutter from 'cookie-cutter'
 
 const steps = [
   "Let's create your quiz!",
   "Share it with your friends",
   "See their results & discover your real best friends"
 ]
-
 const container = {
   hidden: { opacity: 0 },
   show: {
@@ -35,16 +34,9 @@ const item = {
 export default function Home({ quiz }) {
   const [quizState, dispatch] = useContext(CreateQuizContext);
   const { selectedLang } = quizState
-  const [loading, setLoading] = useState(true)
-  const router = useRouter()
+  
   useEffect(() => {
-    const localQuiz = localStorage.getItem("QUIZV_SLUG")
-    if (localQuiz) {
-      router.push('/[quiz]', `/${localQuiz}`)
-    } else {
-      dispatch(setQuestions(quiz.QuizQuestion))
-      setLoading(false)
-    }
+    dispatch(setQuestions(quiz.QuizQuestion))
   }, [])
   const returnSteppedComponent = () => {
     switch (quizState.step) {
@@ -65,24 +57,22 @@ export default function Home({ quiz }) {
   return (
     <motion.div className="col-md-8" animate="show" initial="hidden" variants={container}>
       <Logo />
-      {
-        loading ? (
-          <Loader />
-        ) : (
-            <>
-              <TitleStyled variants={item}>
-                {Translate['How well do your friends know you ?'][selectedLang]}
-              </TitleStyled>
-              {returnSteppedComponent()}
-            </>
-          )
-      }
+      <TitleStyled variants={item}>
+        {Translate['How well do your friends know you ?'][selectedLang]}
+      </TitleStyled>
+      {returnSteppedComponent()}
     </motion.div>
   )
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps({ req, res }) {
+  const cookies = new Cookies(req, res);
+  const localQuiz = cookies.get("QUIZV_SLUG")
   const quiz = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/quizzes/1`);
+  if (localQuiz) {
+    res.writeHead(302, { Location: `/${localQuiz}` })
+    res.end();
+  }
   return {
     props: {
       quiz: quiz.data

@@ -71,7 +71,7 @@ const MyApp = ({ Component, pageProps, router }) => {
                     <AdsLeft />
                   </div>
                   <GlobalStyles />
-                  <Component {...pageProps} key={router.asPath} />
+                  <Component {...pageProps} />
                   <div className="col-md-2">
                     <AdsRight />
                   </div>
