@@ -12,6 +12,7 @@ import Loader from 'components/Loader'
 import { useApp } from '../hooks/useApp'
 import { container, item } from '../helpers/FramerMotionAnimationValues'
 import { indexSteps } from '../helpers/static/static-texts'
+import { AppContainer } from '../components/Shared/AppContainer'
 
 export default function Home({ quiz }) {
   const [{ selectedLang, step }] = useContext(CreateQuizContext);
@@ -34,8 +35,7 @@ export default function Home({ quiz }) {
     }
   }
   return (
-    <motion.div className="col-md-8" animate="show" initial="hidden" variants={container}>
-      <Logo />
+    <AppContainer>
       {
         loading ? (
           <Loader />
@@ -48,7 +48,7 @@ export default function Home({ quiz }) {
             </>
           )
       }
-    </motion.div>
+    </AppContainer>
   )
 }
 

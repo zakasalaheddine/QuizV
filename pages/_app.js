@@ -66,25 +66,7 @@ const MyApp = ({ Component, pageProps, router }) => {
             <GlobalStyles />
 
             <div className="container">
-              <main>
-                <div className="row">
-                  <div className="col-md-2">
-                    <script
-                      data-cfasync="false"
-                      type="text/javascript"
-                      src="https://www.greatdexchange.com/a/display.php?r=3649027"
-                    ></script>
-                  </div>
-                  <Component {...pageProps} key={router.asPath} />
-                  <div className="col-md-2">
-                    <script
-                      data-cfasync="false"
-                      type="text/javascript"
-                      src="https://www.greatdexchange.com/a/display.php?r=3673895"
-                    ></script>
-                  </div>
-                </div>
-              </main>
+              <Component {...pageProps} key={router.asPath} />
               <Footer />
             </div>
           </CreateQuizContext.Provider>

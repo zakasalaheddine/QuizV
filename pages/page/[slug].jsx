@@ -3,6 +3,7 @@ import Logo from "components/Logo";
 import Axios from 'axios'
 import ReactMarkdown from 'react-markdown'
 import { NextSeo } from "next-seo";
+import { AppContainer } from "../../components/Shared/AppContainer";
 
 
 export default function Page({ page: { title, content } }) {
@@ -10,28 +11,17 @@ export default function Page({ page: { title, content } }) {
     title: `${title} • quizv.com`
   }
   return (
-    <>
+    <AppContainer>
       <NextSeo {...SEO} />
-      <div className="container">
-        <main>
-          <div className="row">
-            <div className="col-md-2"></div>
-            <div className="col-md-8">
-              <Logo />
-              <CardStyled>
-                <div className="card-header">
-                  <h1>{title}</h1>
-                </div>
-                <div className="card-body">
-                  <ReactMarkdown source={content} />
-                </div>
-              </CardStyled>
-            </div>
-            <div className="col-md-2"></div>
-          </div>
-        </main>
-      </div>
-    </>
+      <CardStyled>
+        <div className="card-header">
+          <h1>{title}</h1>
+        </div>
+        <div className="card-body">
+          <ReactMarkdown source={content} />
+        </div>
+      </CardStyled>
+    </AppContainer>
   )
 }
 export async function getServerSideProps({ params: { slug }, res }) {

@@ -1,6 +1,5 @@
 import { StepStyled } from "./StyledTags";
 import { Translate } from "lang/StaticTexts";
-import { SlideFromRightToLeft } from "./FramerMotionAnnimations";
 
 export default function Steps({ steps, lang, animation }) {
 
