@@ -1,5 +1,4 @@
 import { CardStyled, TextAreaStyled, ButtonStyled } from "./StyledTags";
-import { motion } from 'framer-motion'
 import { useContext } from "react";
 import Answer from "./Answer";
 import CreateQuizContext from "context/CreateQuizContext";

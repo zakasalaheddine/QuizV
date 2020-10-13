@@ -8,20 +8,8 @@ import { useRouter } from 'next/router'
 import { Translate } from "lang/StaticTexts";
 import { motion } from "framer-motion";
 import AppOptionContext from "../context/AppOptionsContext";
+import { container, item } from "../helpers/FramerMotionAnimationValues";
 
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.3
-    }
-  }
-}
-const item = {
-  hidden: { opacity: 0 },
-  show: { opacity: 1 }
-}
 export default function QuestionsContainer() {
   const router = useRouter();
   const [quizState] = useContext(CreateQuizContext);

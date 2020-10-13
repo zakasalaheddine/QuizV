@@ -10,26 +10,13 @@ import { motion } from 'framer-motion'
 import Logo from '../components/Logo'
 import Loader from 'components/Loader'
 import { useApp } from '../hooks/useApp'
+import { container, item } from '../helpers/FramerMotionAnimationValues'
 
 const steps = [
   "Let's create your quiz!",
   "Share it with your friends",
   "See their results & discover your real best friends"
 ]
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.3
-    }
-  },
-  exit: { x: -300, opacity: 0 }
-}
-const item = {
-  hidden: { opacity: 0 },
-  show: { opacity: 1 }
-}
 export default function Home({ quiz }) {
   const [{ selectedLang, step }] = useContext(CreateQuizContext);
   const { loading } = useApp(quiz)

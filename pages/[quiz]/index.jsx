@@ -9,7 +9,6 @@ import Results from "components/UserQuiz/Results";
 import CreateQuizContext from "context/CreateQuizContext";
 import { changeSelectedLang } from "context/CreateQuizActions";
 import Logo from "components/Logo";
-import Cookies from "cookies";
 
 export default function QuizPage({ slug, data }) {
   const router = useRouter();

@@ -1,6 +1,6 @@
 import { ImageLogo } from "components/StyledTags";
-import { FadeInAnnimation } from "components/FramerMotionAnnimations";
 import Link from "next/link";
+import { FadeInAnnimation } from "../helpers/FramerMotionAnimationValues";
 export default function Logo() {
   return (
     <Link href="/">

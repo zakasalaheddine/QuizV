@@ -4,6 +4,7 @@ import { useContext } from "react";
 import CreateQuizContext from "context/CreateQuizContext";
 import { changeUsername, changeSelectedLang, changeSteps, updateQuestionsWithUsername } from "context/CreateQuizActions";
 import { Translate } from "lang/StaticTexts";
+import { container } from "../helpers/FramerMotionAnimationValues";
 
 const Languages = [
   {
@@ -51,20 +52,7 @@ export default function StartForm() {
 
   return (
     <CardStyled className="card" small={true}
-      variants={{
-        initial: {
-          opacity: 0,
-          scale: 2,
-        },
-        animate: {
-          opacity: 1,
-          scale: 1,
-          transition: {
-            delay: 1.5,
-            staggerChildren: 0.3
-          }
-        }
-      }}
+      variants={container}
       initial="initial" animate="animate">
       <div className="card-body">
         <div className="mb-3">
