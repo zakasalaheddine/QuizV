@@ -1,4 +1,4 @@
-import {TitleStyled, LinkAsBuuton, ButtonStyled } from "./StyledTags";
+import { TitleStyled, LinkAsBuuton, ButtonStyled } from "./StyledTags";
 import Steps from "./Steps";
 import { PLATFORMS, getSocialMediaUrl } from "../helpers/ShareQuizHelpers";
 import AnswersTable from "./AnswersTable";
@@ -9,12 +9,9 @@ import { motion } from "framer-motion";
 import Link from 'next/link'
 import UrlToQuiz from "./UrlToQuiz";
 import { container, item } from "../helpers/FramerMotionAnimationValues";
+import { dashboardSteps } from "../helpers/static/static-texts";
 
-const steps = [
-  "Now simply share your quiz link with all your friends",
-  "Your friends will try to match your answers"
-]
-export default function QuizDashboard({ quizData: {lang, Answers, id} }) {
+export default function QuizDashboard({ quizData: { lang, Answers, id } }) {
   const { query: { quiz } } = useRouter();
   const url = `${process.env.NEXT_PUBLIC_APP_URL}/${quiz}`
 
@@ -28,7 +25,7 @@ export default function QuizDashboard({ quizData: {lang, Answers, id} }) {
     <motion.div className="mb-5" variants={container} initial="hidden" animate="show">
       <TitleStyled variants={item}>{Translate["Your quiz is ready"][lang]}</TitleStyled>
       <UrlToQuiz url={url} />
-      <Steps steps={steps} lang={quizData.lang} animation={item} />
+      <Steps steps={dashboardSteps} lang={quizData.lang} animation={item} />
       <AnswersTable answers={Answers} lang={lang} animation={item} />
       <div className="buttons my-5">
         <LinkAsBuuton

@@ -11,12 +11,8 @@ import Logo from '../components/Logo'
 import Loader from 'components/Loader'
 import { useApp } from '../hooks/useApp'
 import { container, item } from '../helpers/FramerMotionAnimationValues'
+import { indexSteps } from '../helpers/static/static-texts'
 
-const steps = [
-  "Let's create your quiz!",
-  "Share it with your friends",
-  "See their results & discover your real best friends"
-]
 export default function Home({ quiz }) {
   const [{ selectedLang, step }] = useContext(CreateQuizContext);
   const { loading } = useApp(quiz)
@@ -26,7 +22,7 @@ export default function Home({ quiz }) {
       case 1:
         return (
           <motion.div animate="show" initial="hidden" variants={container} exit="exit">
-            <Steps steps={steps} lang={selectedLang} animation={item} />
+            <Steps steps={indexSteps} lang={selectedLang} animation={item} />
             <StartForm />
           </motion.div>
         )

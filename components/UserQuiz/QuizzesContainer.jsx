@@ -4,6 +4,7 @@ import AnswerQuizContext from "context/AnswerQuizContext";
 import { selectAnswerToQuiz } from "context/AnswerQuizActions";
 import ResultModal from "./ResultModal";
 import { UpQuestion } from "../Ads";
+import { container } from "../../helpers/FramerMotionAnimationValues";
 
 export default function QuizzesContainer() {
   const [answerState, dispatchAnswer] = useContext(AnswerQuizContext)
@@ -15,16 +16,7 @@ export default function QuizzesContainer() {
     <>
       <UpQuestion />
       <div className="quizzes-container">
-        <CardStyled variants={{
-          initial: {
-            opacity: 0,
-            scale: 2,
-          },
-          animate: {
-            opacity: 1,
-            scale: 1,
-          }
-        }}
+        <CardStyled variants={container}
           initial="initial" animate="animate">
           <div className="card-header"><h3>{currentQuestion[lang]}</h3></div>
           <div className="card-body">
