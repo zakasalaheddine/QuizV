@@ -11,19 +11,35 @@ import { changeSelectedLang } from "context/CreateQuizActions";
 import Logo from "components/Logo";
 import Cookies from "cookies";
 
-export default function QuizPage({ slug, data, isMine, isAlreadyAnswerd }) {
+export default function QuizPage({ slug, data }) {
+  const router = useRouter();
+  const [loading, setLoading] = useState(true)
   const [quizIsMine, setQuizIsMine] = useState(false)
   const [alreadyAnswerd, setAlreadyAnswerd] = useState(false)
   const [answerState, dispatchAnswer] = useContext(AnswerQuizContext)
   const [_, dispatch] = useContext(CreateQuizContext)
   useEffect(() => {
-    dispatch(changeSelectedLang(data.lang))
-    setQuizIsMine(isMine)
-    setAlreadyAnswerd(isAlreadyAnswerd)
-    dispatchAnswer(setDataToAnswer(data))
+    if (!data) {
+      router.push("/")
+      return;
+    }
+    const localSlug = localStorage.getItem("QUIZV_SLUG")
+    if (localSlug && localSlug === slug) {
+      setQuizIsMine(true)
+      dispatch(changeSelectedLang(data.lang))
+    } else {
+      const AnswersData = localStorage.getItem(slug)
+      if (AnswersData) {
+        setAlreadyAnswerd(true)
+      }
+      dispatchAnswer(setDataToAnswer(data))
+      setQuizIsMine(false)
+    }
+    setLoading(false)
   }, [])
 
   const renderCorrectComponent = () => {
+    if (loading) return <p>Loading ....</p>
     if (quizIsMine) return <QuizDashboard slug={slug} quizData={data} />
     if (alreadyAnswerd) return <Results />
     return <UserQuiz creator={answerState.creatorName} />
@@ -37,7 +53,7 @@ export default function QuizPage({ slug, data, isMine, isAlreadyAnswerd }) {
   )
 }
 
-export async function getServerSideProps({ params, req, res }) {
+export async function getServerSideProps({ params, res }) {
   try {
     const { quiz } = params
     const result = await Axios.get(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/user-quizzes?slug=${quiz}`)
@@ -48,16 +64,8 @@ export async function getServerSideProps({ params, req, res }) {
       return { props: {} }
     }
     if (quizData.length > 0) {
-      const cookies = new Cookies(req, res);
-      const localQuiz = cookies.get("QUIZV_SLUG");
-      const isAlreadyAnswerd = cookies.get(quiz)
       return {
-        props: { 
-          slug: quiz, 
-          data: quizData[0], 
-          isMine: localQuiz === quiz, 
-          isAlreadyAnswerd : !!isAlreadyAnswerd
-        },
+        props: { slug: quiz, data: quizData[0] },
       }
     }
   } catch (error) {

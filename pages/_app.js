@@ -64,7 +64,7 @@ const MyApp = ({ Component, pageProps, router }) => {
               </>
             )}
             <GlobalStyles />
-            
+
             <div className="container">
               <main>
                 <div className="row">
@@ -75,7 +75,7 @@ const MyApp = ({ Component, pageProps, router }) => {
                       src="https://www.greatdexchange.com/a/display.php?r=3649027"
                     ></script>
                   </div>
-                  <Component {...pageProps} />
+                  <Component {...pageProps} key={router.asPath} />
                   <div className="col-md-2">
                     <script
                       data-cfasync="false"

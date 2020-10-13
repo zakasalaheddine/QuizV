@@ -9,7 +9,6 @@ import useSound from 'use-sound';
 import LostSound from 'sounds/lost.mp3'
 import WinSound from 'sounds/win.mp3'
 import { InResultModal } from "../Ads";
-import cookieCutter from 'cookie-cutter'
 
 export default function ResultModal({ isOn }) {
   const [answerState, dispatchAnswer] = useContext(AnswerQuizContext)
@@ -28,8 +27,6 @@ export default function ResultModal({ isOn }) {
       lang: lang
     }
     const result = await Axios.put(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/user-quizzes/${quizId}/answer`, data)
-    console.log(JSON.stringify({ ...data, creatorName: result.data.username }, null, 0))
-    cookieCutter.set(result.data.slug, JSON.stringify({  creatorName: result.data.username }, null, 0))
     localStorage.setItem(result.data.slug, JSON.stringify({ ...data, creatorName: result.data.username }))
   }
   const [playLost] = useSound(LostSound, { volume: 0.50 });
@@ -52,7 +49,7 @@ export default function ResultModal({ isOn }) {
             <ResultContainer initial={{ y: 300 }} animate={{ y: 0 }} exit={{ y: 200 }}>
               <TitleStyled>RESULT</TitleStyled>
               <TitleStyled>{isCorrect ? Translate["IT'S CORRECT"][answerState.lang] : Translate["IT'S NOT CORRECT"][answerState.lang]}</TitleStyled>
-              <script data-cfasync="false" type="text/javascript" src="https://www.greatdexchange.com/a/display.php?r=3649027"></script>
+              <InResultModal />
               <NextButton className={`btn btn-success`} onClick={nextQuestionHandler}>
                 {isEnd ? Translate["SHOW RESULTS"][answerState.lang] : Translate["NEXT QUESTION"][answerState.lang]}
               </NextButton>

@@ -5,7 +5,6 @@ import { useRouter } from "next/router"
 import { Translate } from "lang/StaticTexts"
 import Link from 'next/link'
 import { UnderQuestion } from "../Ads"
-import cookieCutter from 'cookie-cutter'
 
 export default function Results() {
   const [answerData, setAnswerData] = useState({ answers: [], score: 0, lang: "en" })
@@ -20,7 +19,6 @@ export default function Results() {
   const getResultTitleBaseOnPercent = () => {
     if (answerData.answers.length > 0) {
       const valuePercent = answerData.score / answerData.answers.length * 100;
-      console.log({ valuePercent })
       if (valuePercent <= 25) return Translate["Such a bad friend"][answerData.lang]
       if (valuePercent < 50) return Translate["Not that bad"][answerData.lang]
       if (valuePercent <= 75) return Translate["Such a good friend"][answerData.lang]
