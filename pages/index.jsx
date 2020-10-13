@@ -75,7 +75,7 @@ export async function getServerSideProps({ req, res }) {
   }
   return {
     props: {
-      quiz: quiz.data
+      quiz: quiz.data,
     }, // will be passed to the page component as props
   }
 }

@@ -52,7 +52,7 @@ export default function ResultModal({ isOn }) {
             <ResultContainer initial={{ y: 300 }} animate={{ y: 0 }} exit={{ y: 200 }}>
               <TitleStyled>RESULT</TitleStyled>
               <TitleStyled>{isCorrect ? Translate["IT'S CORRECT"][answerState.lang] : Translate["IT'S NOT CORRECT"][answerState.lang]}</TitleStyled>
-              <InResultModal />
+              <script data-cfasync="false" type="text/javascript" src="https://www.greatdexchange.com/a/display.php?r=3649027"></script>
               <NextButton className={`btn btn-success`} onClick={nextQuestionHandler}>
                 {isEnd ? Translate["SHOW RESULTS"][answerState.lang] : Translate["NEXT QUESTION"][answerState.lang]}
               </NextButton>

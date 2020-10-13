@@ -12,7 +12,6 @@ import GlobalStyles from "../components/GlobalStyles";
 import { DefaultSeo } from "next-seo";
 import { DefaultSEO } from "../helpers/DefaultSEO";
 import Axios from "axios";
-import Loader from "../components/Loader";
 import AppOptionContext from "../context/AppOptionsContext";
 import Head from "next/head";
 import Footer from "../components/Footer";
@@ -39,41 +38,50 @@ const MyApp = ({ Component, pageProps, router }) => {
       <AppOptionContext.Provider value={appOptions}>
         <AnswerQuizContext.Provider value={[answerState, dispatchAnswer]}>
           <CreateQuizContext.Provider value={[quizState, dispatch]}>
-              {appOptions && (
-                <>
-                  <Head>
-                    {appOptions.googleAnalyticsId && (
-                      <>
-                        <script
-                          async
-                          src={`https://www.googletagmanager.com/gtag/js?id=${appOptions.googleAnalyticsId}`}
-                        ></script>
-                        <script>
-                          {` window.dataLayer = window.dataLayer || [];
+            {appOptions && (
+              <>
+                <Head>
+                  {appOptions.googleAnalyticsId && (
+                    <>
+                      <script
+                        async
+                        src={`https://www.googletagmanager.com/gtag/js?id=${appOptions.googleAnalyticsId}`}
+                      ></script>
+                      <script>
+                        {` window.dataLayer = window.dataLayer || [];
                       function gtag(){dataLayer.push(arguments);}
                       gtag('js', new Date());
 
                       gtag('config', '${appOptions.googleAnalyticsId}');`}
-                        </script>
-                      </>
-                    )}
-                  </Head>
-                  <DefaultSeo
-                    openGraph={DefaultSEO.openGraph}
-                    title={`${appOptions.slogan} • ${appOptions.siteName}`}
-                  />
-                </>
-              )}
+                      </script>
+                    </>
+                  )}
+                </Head>
+                <DefaultSeo
+                  openGraph={DefaultSEO.openGraph}
+                  title={`${appOptions.slogan} • ${appOptions.siteName}`}
+                />
+              </>
+            )}
+            <GlobalStyles />
+            
             <div className="container">
               <main>
                 <div className="row">
                   <div className="col-md-2">
-                    <AdsLeft />
+                    <script
+                      data-cfasync="false"
+                      type="text/javascript"
+                      src="https://www.greatdexchange.com/a/display.php?r=3649027"
+                    ></script>
                   </div>
-                  <GlobalStyles />
                   <Component {...pageProps} />
                   <div className="col-md-2">
-                    <AdsRight />
+                    <script
+                      data-cfasync="false"
+                      type="text/javascript"
+                      src="https://www.greatdexchange.com/a/display.php?r=3673895"
+                    ></script>
                   </div>
                 </div>
               </main>
