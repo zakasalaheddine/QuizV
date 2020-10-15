@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { TitleStyled } from "components/StyledTags";
 import { Translate } from "lang/StaticTexts";
 import CreateQuizContext from "context/CreateQuizContext";
@@ -8,6 +7,7 @@ import { snapchatFirstSteps, snapchatSecondSteps } from "../../helpers/static/st
 import { AppContainer } from "../../components/Shared/AppContainer";
 import GoBackButton from "../../components/GoBackButton";
 import ListOfSteps from "../../components/ShareScreensComponents/ListOfSteps";
+import ImageInstruction from "../../components/ShareScreensComponents/ImageInstruction";
 
 
 export default function SnapChatPage() {
@@ -16,9 +16,9 @@ export default function SnapChatPage() {
     <AppContainer>
       <TitleStyled variants={item}>{Translate["Share Quiz on"][selectedLang]} Snapchat</TitleStyled>
       <ListOfSteps steps={snapchatFirstSteps} lang={selectedLang} />
-      <motion.img variants={item} className="img-fluid mb-3 shadow-sm" src="/assets/snap 1.png" alt="Instruction for insta Bio 1" />
+      <ImageInstruction src="/assets/snap 1.png" alt="Share on SnapChat 1" />
       <ListOfSteps steps={snapchatSecondSteps} lang={selectedLang} />
-      <motion.img variants={item} className="img-fluid mb-3 shadow-sm" src="/assets/snap 2.png" alt="Instruction for insta Bio 1" />
+      <ImageInstruction src="/assets/snap 2.png" alt="Share on SnapChat 2" />
       <GoBackButton />
     </AppContainer>
   )
