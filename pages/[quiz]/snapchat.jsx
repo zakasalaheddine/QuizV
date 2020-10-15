@@ -7,6 +7,7 @@ import { item } from "../../helpers/FramerMotionAnimationValues";
 import { snapchatFirstSteps, snapchatSecondSteps } from "../../helpers/static/static-texts";
 import { AppContainer } from "../../components/Shared/AppContainer";
 import GoBackButton from "../../components/GoBackButton";
+import ListOfSteps from "../../components/ShareScreensComponents/ListOfSteps";
 
 
 export default function SnapChatPage() {
@@ -14,13 +15,9 @@ export default function SnapChatPage() {
   return (
     <AppContainer>
       <TitleStyled variants={item}>{Translate["Share Quiz on"][selectedLang]} Snapchat</TitleStyled>
-      <ul>
-        {snapchatFirstSteps.map((step, idx) => (<motion.li key={idx} variants={item}>{Translate[step][selectedLang]}</motion.li>))}
-      </ul>
+      <ListOfSteps steps={snapchatFirstSteps} lang={selectedLang} />
       <motion.img variants={item} className="img-fluid mb-3 shadow-sm" src="/assets/snap 1.png" alt="Instruction for insta Bio 1" />
-      <ul>
-        {snapchatSecondSteps.map((step, idx) => (<motion.li key={idx} variants={item}>{Translate[step][selectedLang]}</motion.li>))}
-      </ul>
+      <ListOfSteps steps={snapchatSecondSteps} lang={selectedLang} />
       <motion.img variants={item} className="img-fluid mb-3 shadow-sm" src="/assets/snap 2.png" alt="Instruction for insta Bio 1" />
       <GoBackButton />
     </AppContainer>
