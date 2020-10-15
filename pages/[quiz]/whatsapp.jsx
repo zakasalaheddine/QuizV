@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { TitleStyled } from "components/StyledTags";
 import { Translate } from "lang/StaticTexts";
 import CreateQuizContext from "context/CreateQuizContext";
