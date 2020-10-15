@@ -11,7 +11,8 @@ import UrlToQuiz from "./UrlToQuiz";
 import { container, item } from "../helpers/FramerMotionAnimationValues";
 import { dashboardSteps } from "../helpers/static/static-texts";
 
-export default function QuizDashboard({ quizData: { lang, Answers, id } }) {
+export default function QuizDashboard({ quizData }) {
+  const { lang, Answers, id } = quizData
   const { query: { quiz } } = useRouter();
   const url = `${process.env.NEXT_PUBLIC_APP_URL}/${quiz}`
 

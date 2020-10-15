@@ -9,6 +9,7 @@ import Results from "components/UserQuiz/Results";
 import CreateQuizContext from "context/CreateQuizContext";
 import { changeSelectedLang } from "context/CreateQuizActions";
 import Logo from "components/Logo";
+import { AppContainer } from "../../components/Shared/AppContainer";
 
 export default function QuizPage({ slug, data }) {
   const router = useRouter();
@@ -45,10 +46,9 @@ export default function QuizPage({ slug, data }) {
   }
 
   return (
-    <div className="col-md-8">
-      <Logo />
+    <AppContainer>
       {renderCorrectComponent()}
-    </div>
+    </AppContainer>
   )
 }
 
