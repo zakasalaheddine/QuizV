@@ -1,21 +1,20 @@
-import CreateQuizContext from "../context/CreateQuizContext";
 import { useReducer, useState, useEffect } from "react";
-import { CreateQuizReducer, initialState } from "../context/CreateQuizReducer";
+import Head from "next/head";
+import Axios from "axios";
 import {
   AnswerQuizReducer,
   answersInitialState,
-} from "../context/AnswerQuizReducer";
-import AnswerQuizContext from "../context/AnswerQuizContext";
+} from "context/AnswerQuizReducer";
 import { ThemeProvider } from "emotion-theming";
-import { defaultTheme } from "../themes/DefaultTheme";
-import GlobalStyles from "../components/GlobalStyles";
+import { defaultTheme } from "themes/DefaultTheme";
+import { GlobalStyles } from "styles/GlobalStyles";
 import { DefaultSeo } from "next-seo";
-import { DefaultSEO } from "../helpers/DefaultSEO";
-import Axios from "axios";
-import AppOptionContext from "../context/AppOptionsContext";
-import Head from "next/head";
-import Footer from "../components/Footer";
-import { AdsLeft, AdsRight } from "../components/Ads";
+import { DefaultSEO } from "helpers/DefaultSEO";
+import CreateQuizContext from "context/CreateQuizContext";
+import { CreateQuizReducer, initialState } from "context/CreateQuizReducer";
+import AnswerQuizContext from "context/AnswerQuizContext";
+import AppOptionContext from "context/AppOptionsContext";
+import Footer from "components/layout/Footer";
 
 const MyApp = ({ Component, pageProps, router }) => {
   const [quizState, dispatch] = useReducer(CreateQuizReducer, initialState);

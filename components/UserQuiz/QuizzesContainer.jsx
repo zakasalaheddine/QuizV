@@ -1,10 +1,10 @@
-import { CardStyled, ButtonStyled } from "../StyledTags";
+import { CardStyled, ButtonStyled } from "styled/StyledTags";
 import { useContext } from "react";
 import AnswerQuizContext from "context/AnswerQuizContext";
 import { selectAnswerToQuiz } from "context/AnswerQuizActions";
 import ResultModal from "./ResultModal";
 import { UpQuestion } from "../Ads";
-import { container } from "../../helpers/FramerMotionAnimationValues";
+import { container } from "animations/basic";
 
 export default function QuizzesContainer() {
   const [answerState, dispatchAnswer] = useContext(AnswerQuizContext)

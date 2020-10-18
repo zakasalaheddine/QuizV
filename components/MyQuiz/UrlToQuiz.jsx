@@ -1,5 +1,5 @@
-import { InputTextStyled, ButtonStyled } from "./StyledTags";
-import { useState, useRef } from "react";
+import { InputTextStyled, ButtonStyled } from "styled/StyledTags";
+import { useRef } from "react";
 
 export default function UrlToQuiz({ url }) {
   const inputRef = useRef(null);

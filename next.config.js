@@ -9,6 +9,10 @@ module.exports = withAssetsImport({
     config.resolve.alias["hooks"] = path.join(__dirname, "hooks");
     config.resolve.alias["themes"] = path.join(__dirname, "themes");
     config.resolve.alias["sounds"] = path.join(__dirname, "sounds");
+    config.resolve.alias["helpers"] = path.join(__dirname, "helpers");
+    config.resolve.alias["styled"] = path.join(__dirname, "utils/styled-components");
+    config.resolve.alias["animations"] = path.join(__dirname, "utils/animations");
+    config.resolve.alias["styles"] = path.join(__dirname, "utils/styles");
 
     return config;
   },

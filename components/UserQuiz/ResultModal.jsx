@@ -1,4 +1,4 @@
-import { ModalContainer, ResultContainer, TitleStyled, ButtonStyled, NextButton } from "../StyledTags";
+import { ModalContainer, ResultContainer, TitleStyled, NextButton } from "styled/StyledTags";
 import { AnimatePresence } from "framer-motion";
 import { useContext, useEffect } from "react";
 import AnswerQuizContext from "context/AnswerQuizContext";

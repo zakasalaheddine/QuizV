@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { item } from "../../helpers/FramerMotionAnimationValues";
+import { item } from "animations/basic";
 
 export default function ImageInstruction({ src, alt }) {
   return (

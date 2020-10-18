@@ -1,4 +1,4 @@
-import { Switch, TextAreaStyled, DeleteButton } from "./StyledTags";
+import { Switch, TextAreaStyled, DeleteButton } from "styled/StyledTags";
 import { motion } from "framer-motion";
 import { useContext } from "react";
 import CreateQuizContext from "context/CreateQuizContext";

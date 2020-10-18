@@ -1,4 +1,4 @@
-import { CardStyled, TextAreaStyled, ButtonStyled } from "./StyledTags";
+import { CardStyled, TextAreaStyled, ButtonStyled } from "styled/StyledTags";
 import { useContext } from "react";
 import Answer from "./Answer";
 import CreateQuizContext from "context/CreateQuizContext";

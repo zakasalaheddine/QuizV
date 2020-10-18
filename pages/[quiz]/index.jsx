@@ -1,6 +1,6 @@
 import Axios from "axios";
 import { AppContainer } from "components/Shared/AppContainer";
-import { useSingleQuizHandler } from "../../hooks/useSingleQuizHandler";
+import { useSingleQuizHandler } from "hooks/useSingleQuizHandler";
 
 export default function QuizPage({ slug, data }) {
   const { renderCorrectComponent } = useSingleQuizHandler(data, slug)

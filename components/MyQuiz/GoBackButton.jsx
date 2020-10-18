@@ -1,8 +1,8 @@
 import { useRouter } from "next/router"
 import { useContext } from "react"
-import CreateQuizContext from "../context/CreateQuizContext"
-import { item } from "../helpers/FramerMotionAnimationValues"
-import { ButtonStyled } from "./StyledTags"
+import CreateQuizContext from "context/CreateQuizContext"
+import { item } from "animations/basic"
+import { ButtonStyled } from "styled/StyledTags"
 import { Translate } from "lang/StaticTexts";
 
 export default function GoBackButton() {

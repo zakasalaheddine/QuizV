@@ -1,13 +1,13 @@
-import { TitleStyled } from "components/StyledTags";
+import { TitleStyled } from "styled/StyledTags";
 import { Translate } from "lang/StaticTexts";
 import CreateQuizContext from "context/CreateQuizContext";
 import { useContext } from "react";
-import { whatsAppFirstSteps, whatsAppSecondSteps } from "../../helpers/static/static-texts";
-import GoBackButton from "../../components/GoBackButton";
-import { AppContainer } from "../../components/Shared/AppContainer";
-import { item } from "../../helpers/FramerMotionAnimationValues";
-import ListOfSteps from "../../components/ShareScreensComponents/ListOfSteps";
-import ImageInstruction from "../../components/ShareScreensComponents/ImageInstruction";
+import { whatsAppFirstSteps, whatsAppSecondSteps } from "helpers/static/static-texts";
+import { AppContainer } from "components/Shared/AppContainer";
+import { item } from "animations/basic";
+import GoBackButton from "components/MyQuiz/GoBackButton";
+import ListOfSteps from "components/MyQuiz/ListOfSteps";
+import ImageInstruction from "components/MyQuiz/ImageInstruction";
 
 export default function WhatsappPage() {
   const [{ selectedLang }] = useContext(CreateQuizContext)

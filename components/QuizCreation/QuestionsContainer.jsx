@@ -1,14 +1,15 @@
 import { useContext } from "react";
-import QuestionForm from "./QuestionForm";
-import CreateQuizContext from "../context/CreateQuizContext";
-import { ButtonStyled } from "./StyledTags";
-import { validateQuestionsHasSelectedAnswers, generateRandomSlug } from "../helpers/CreateQuizHelpers";
-import axios from 'axios';
-import { useRouter } from 'next/router'
-import { Translate } from "lang/StaticTexts";
 import { motion } from "framer-motion";
-import AppOptionContext from "../context/AppOptionsContext";
-import { container, item } from "../helpers/FramerMotionAnimationValues";
+import { useRouter } from 'next/router'
+import axios from 'axios';
+
+import { container, item } from "helpers/FramerMotionAnimationValues";
+import { validateQuestionsHasSelectedAnswers, generateRandomSlug } from "helpers/CreateQuizHelpers";
+import { ButtonStyled } from "styled/StyledTags";
+import { Translate } from "lang/StaticTexts";
+import CreateQuizContext from "context/CreateQuizContext";
+import AppOptionContext from "context/AppOptionsContext";
+import QuestionForm from "./QuestionForm";
 
 export default function QuestionsContainer() {
   const router = useRouter();

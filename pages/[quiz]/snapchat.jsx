@@ -1,13 +1,13 @@
-import { TitleStyled } from "components/StyledTags";
+import { TitleStyled } from "styled/StyledTags";
 import { Translate } from "lang/StaticTexts";
 import CreateQuizContext from "context/CreateQuizContext";
 import { useContext } from "react";
-import { item } from "../../helpers/FramerMotionAnimationValues";
-import { snapchatFirstSteps, snapchatSecondSteps } from "../../helpers/static/static-texts";
-import { AppContainer } from "../../components/Shared/AppContainer";
-import GoBackButton from "../../components/GoBackButton";
-import ListOfSteps from "../../components/ShareScreensComponents/ListOfSteps";
-import ImageInstruction from "../../components/ShareScreensComponents/ImageInstruction";
+import { item } from "animations/basic";
+import { snapchatFirstSteps, snapchatSecondSteps } from "helpers/static/static-texts";
+import { AppContainer } from "components/Shared/AppContainer";
+import GoBackButton from "components/MyQuiz/GoBackButton";
+import ListOfSteps from "components/MyQuiz/ListOfSteps";
+import ImageInstruction from "components/MyQuiz/ImageInstruction";
 
 
 export default function SnapChatPage() {

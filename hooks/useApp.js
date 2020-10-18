@@ -1,7 +1,7 @@
-import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
-import { setQuestions } from "../context/CreateQuizActions";
-import CreateQuizContext from "../context/CreateQuizContext";
+import { useRouter } from "next/router";
+import { setQuestions } from "context/CreateQuizActions";
+import CreateQuizContext from "context/CreateQuizContext";
 
 export const useApp = (quiz) => {
   const [_, dispatch] = useContext(CreateQuizContext);

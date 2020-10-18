@@ -1,7 +1,7 @@
 import { Translate } from "lang/StaticTexts";
 import Link from "next/link";
-import { item } from "../../helpers/FramerMotionAnimationValues";
-import { LinkAsBuuton } from "../StyledTags";
+import { item } from "animations/basic";
+import { LinkAsBuuton } from "styled/StyledTags";
 
 export default function ShareButton({ href, backColor, icon, platform, lang, as, withDarkText = false }) {
   return (

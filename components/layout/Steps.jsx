@@ -1,4 +1,4 @@
-import { StepStyled } from "./StyledTags";
+import { StepStyled } from "styled/StyledTags";
 import { Translate } from "lang/StaticTexts";
 
 export default function Steps({ steps, lang, animation }) {

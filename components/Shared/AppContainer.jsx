@@ -1,6 +1,6 @@
 import { motion } from "framer-motion"
 import { container } from "../../helpers/FramerMotionAnimationValues"
-import Logo from "../Logo"
+import Logo from "components/layout/Logo"
 import { RightSideBar } from "./RightSideBar"
 import { LeftSideBar } from './LeftSideBar'
 

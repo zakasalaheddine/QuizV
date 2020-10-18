@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Translate } from "lang/StaticTexts";
-import { item } from "../../helpers/FramerMotionAnimationValues";
+import { item } from "animations/basic";
 
 const ListOfSteps = ({ steps, lang }) => {
   return (

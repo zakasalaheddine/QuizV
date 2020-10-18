@@ -1,4 +1,4 @@
-import { PLATFORMS, getSocialMediaUrl } from "../../helpers/ShareQuizHelpers";
+import { PLATFORMS, getSocialMediaUrl } from "helpers/ShareQuizHelpers";
 import ShareButton from "./ShareButton";
 
 export default function ShareButtons({ url, lang, quiz }) {

@@ -1,14 +1,15 @@
-import { TitleStyled } from "./StyledTags";
-import Steps from "./Steps";
-import AnswersTable from "./AnswersTable";
+import { TitleStyled } from "styled/StyledTags";
 import { useRouter } from "next/router";
 import { Translate } from "lang/StaticTexts";
 import { motion } from "framer-motion";
+import { container, item } from "animations/basic";
+import { dashboardSteps } from "helpers/static/static-texts";
+
+import Steps from "../layout/Steps";
+import AnswersTable from "./AnswersTable";
 import UrlToQuiz from "./UrlToQuiz";
-import { container, item } from "../helpers/FramerMotionAnimationValues";
-import { dashboardSteps } from "../helpers/static/static-texts";
-import ShareButtons from "./ShareScreensComponents/ShareButtons";
-import DeleteQuizButton from "./ShareScreensComponents/DeleteQuizButton";
+import ShareButtons from "./ShareButtons";
+import DeleteQuizButton from "./DeleteQuizButton";
 
 export default function QuizDashboard({ quizData }) {
   const { lang, Answers, id } = quizData

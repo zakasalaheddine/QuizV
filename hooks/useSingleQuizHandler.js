@@ -6,7 +6,7 @@ import { changeSelectedLang } from "context/CreateQuizActions";
 import AnswerQuizContext from "context/AnswerQuizContext";
 import CreateQuizContext from "context/CreateQuizContext";
 
-import QuizDashboard from "components/QuizDashboard";
+import QuizDashboard from "components/MyQuiz/QuizDashboard";
 import UserQuiz from "components/UserQuiz";
 import Results from "components/UserQuiz/Results";
 

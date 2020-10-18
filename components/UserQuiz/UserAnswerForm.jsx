@@ -1,8 +1,9 @@
-import { CardStyled, LabelStyled, InputTextStyled, ButtonStyled } from "../StyledTags";
+import { CardStyled, LabelStyled, InputTextStyled, ButtonStyled } from "styled/StyledTags";
 import { useContext } from "react";
 import AnswerQuizContext from "context/AnswerQuizContext";
 import { changeResponderUserName, startQuiz } from "context/AnswerQuizActions";
 import { Translate } from "lang/StaticTexts";
+import { container } from 'animations/basic'
 
 export default function UserAnswerForm() {
 
@@ -16,18 +17,8 @@ export default function UserAnswerForm() {
   }
 
   return (
-    <CardStyled variants={{
-      initial: {
-        opacity: 0,
-        scale: 2,
-      },
-      animate: {
-        opacity: 1,
-        scale: 1,
-      }
-    }}
+    <CardStyled variants={container}
       initial="initial" animate="animate" className="card" small={true}>
-
       <div className="card-body">
         <div className="mb-3">
           <LabelStyled htmlFor="username">{Translate["what is your name"][answerState.lang]}</LabelStyled>

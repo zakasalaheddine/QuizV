@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "allowSyntheticDefaultImports": false,
+    "baseUrl": "./",
+    "paths": {
+      "components": ["components/*"],
+      "context": ["context/*"],
+      "public": ["public/*"],
+      "lang": ["lang/*"],
+      "hooks": ["hooks/*"],
+      "themes": ["themes/*"],
+      "sounds": ["sounds/*"],
+      "helpers": ["helpers/*"],
+      "styled": ["utils/styled-components/*"],
+      "animations": ["utils/animations/*"],
+      "styles": ["utils/styles/*"]
+    }
+  },
+  "exclude": ["node_modules", ".next"]
+}

@@ -2,8 +2,8 @@ import Axios from "axios";
 import { Translate } from "lang/StaticTexts";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { item } from "../../helpers/FramerMotionAnimationValues";
-import { ButtonStyled } from "../StyledTags";
+import { item } from "animations/basic";
+import { ButtonStyled } from "styled/StyledTags";
 
 export default function DeleteQuizButton({ lang, id }) {
   const [loading, setLoading] = useState(false)
